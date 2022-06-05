@@ -18,5 +18,11 @@
         android:text="glide"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="testRetrofit"
+        android:text="retrofit"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

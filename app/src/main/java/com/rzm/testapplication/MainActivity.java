@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
+import com.rzm.testapplication.retrofit.RetrofitActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,5 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void testGlide(View view) {
         startActivity(new Intent(getApplicationContext(), GlideActivity.class));
+    }
+
+    public void testRetrofit(View view) {
+        startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
     }
 }

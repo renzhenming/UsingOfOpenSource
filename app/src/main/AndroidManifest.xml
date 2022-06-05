@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".retrofit.RetrofitActivity"
+            android:exported="false" />
+        <activity
             android:name=".glide.GlideActivity"
             android:exported="false" />
         <activity
