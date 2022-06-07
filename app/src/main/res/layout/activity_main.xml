@@ -24,5 +24,11 @@
         android:text="retrofit"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="testARouter"
+        android:text="ARouter"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>

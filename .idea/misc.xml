@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_arouter.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/activity_glide.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_test_adapter.xml" value="0.1" />
       </map>
     </option>

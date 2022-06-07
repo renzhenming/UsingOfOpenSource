@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.rzm.testapplication.arouter.ARouterActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
@@ -29,5 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void testRetrofit(View view) {
         startActivity(new Intent(getApplicationContext(), RetrofitActivity.class));
+    }
+
+    public void testARouter(View view) {
+        startActivity(new Intent(getApplicationContext(), ARouterActivity.class));
     }
 }
