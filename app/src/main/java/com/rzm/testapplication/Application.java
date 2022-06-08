@@ -1,5 +1,7 @@
 package com.rzm.testapplication;
 
+import android.content.res.Resources;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.rzm.exceptionhandler.UncaughtCrashHandler;
 
@@ -17,5 +19,10 @@ public class Application extends android.app.Application {
         }
         ARouter.init(this);
 
+    }
+
+    @Override
+    public Resources getResources() {
+        return super.getResources();
     }
 }

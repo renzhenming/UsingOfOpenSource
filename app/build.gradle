@@ -56,6 +56,12 @@ dependencies {
     implementation 'com.alibaba:arouter-api:1.5.1'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.1'
 
+    //ASM
+    testImplementation("org.ow2.asm:asm:7.1")
+    testImplementation("org.ow2.asm:asm-commons:7.1")
+
 
     implementation 'com.github.renzhenming:CrashHanlder:1.0.0'
+
+
 }
