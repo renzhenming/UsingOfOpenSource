@@ -100,8 +100,10 @@ public class Patch implements Plugin<Project> {
         } else {
             outPutFile = new File(output, variantName);
         }
-        outPutFile.mkdirs();
-        System.out.println(TAG + "out put dir = " + outPutFile.getAbsolutePath());
+        boolean mkdirs = outPutFile.mkdirs();
+
+        final File finalOutputFile = outPutFile;
+        System.out.println(TAG + "mkdirs = " + mkdirs + " out put dir = " + outPutFile.getAbsolutePath());
 
         //处理混淆问题，如果不做处理，同一个类每次混淆结果可能不同，导致差分包生成时无法匹配，所以要应用mapping文件，
         //让同一个类混淆结果和上次保持相同
@@ -116,51 +118,6 @@ public class Patch implements Plugin<Project> {
             System.out.println(TAG + "transformClassesAndResourcesWithR8For" + capitalizeName + " is " + (proguardTask == null ? "null" : "exist"));
         }
 
-        /**
-         * 备份本次的mapping文件
-         */
-        final File mappingBak = new File(outPutFile, "mapping.txt");
-
-        //如果没开启混淆，则为null，不需要备份mapping
-        if (proguardTask != null) {
-            final Task finalProguardTask = proguardTask;
-            proguardTask.doLast(new Action<Task>() {
-                @Override
-                public void execute(Task task) {
-                    FileCollection files = finalProguardTask.getOutputs().getFiles();
-                    for (File file : files) {
-                        System.out.println(TAG + "proguard output file = " + file.getPath());
-                        if (file.getName().endsWith("mapping.txt")) {
-                            try {
-                                FileUtils.copyFile(file, mappingBak);
-                                System.out.println(TAG + " mapping: " + mappingBak.getCanonicalPath());
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                                System.out.println(TAG + " copy mapping: " + e);
-                            }
-                            break;
-                        }
-                    }
-                }
-            });
-        } else {
-            System.out.println(TAG + "proguardTask  is null");
-        }
-        //将上次混淆的mapping应用到本次,如果没有上次的混淆文件就没操作
-        if (mappingBak.exists() && proguardTask != null) {
-            TransformTask transformTask = (TransformTask) proguardTask;
-            Transform transform = transformTask.getTransform();
-            System.out.println(TAG + "applying mapping.txt, transformTask = " + transformTask + " transform = " + transform);
-            if (transform instanceof ProGuardTransform) {
-                System.out.println(TAG + "applying mapping using ProGuardTransform");
-                ProGuardTransform proGuardTransform = (ProGuardTransform) transformTask.getTransform();
-                proGuardTransform.applyTestedMapping(mappingBak);
-            } else if (transform instanceof R8Transform) {
-                System.out.println(TAG + "applying mapping using R8Transform");
-                R8Transform r8Transform = (R8Transform) transformTask.getTransform();
-                r8Transform.setMainDexListOutput(mappingBak);
-            }
-        }
 
         /**
          * 在混淆后 记录类的hash值，并生成补丁包
@@ -171,105 +128,134 @@ public class Patch implements Plugin<Project> {
         // 用dx打包后的jar包:补丁包
         final File patchFile = new File(outPutFile, "patch.jar");
 
-        //拿到dex任务，在任务执行前
-        Task dexTask = project.getTasks().findByName("transformClassesWithDexBuilderFor" + capitalizeName);
-        // doFirst：在任务之前干一些事情
-        // 在把class打包dex之前，插桩并记录每个class的md5 hash值
-        if (dexTask != null) {
-            dexTask.doFirst(new Action<Task>() {
+        //如果没开启混淆，则为null，不需要备份mapping
+        if (proguardTask != null) {
+            proguardTask.doLast(new Action<Task>() {
                 @Override
                 public void execute(Task task) {
-                    //插桩 记录md5并对比
-                    PatchGenerator patchGenerator = new PatchGenerator(project, patchFile,
-                            patchClassFile, hexFile);
-                    //用户配置的application，实际上可以解析manifest自动获取，但是java实现太麻烦了，干脆让用户自己配置
-                    String applicationName = patchExtension.applicationName;
-                    //windows下 目录输出是  xx\xx\  ,linux下是  /xx/xx ,把 . 替换成平台相关的斜杠
-                    applicationName = applicationName.replaceAll("\\.",
-                            Matcher.quoteReplacement(File.separator));
-                    System.out.println(TAG + "applicationName = " + applicationName + " applicationName = " + applicationName);
-
-                    //记录类的md5
-                    Map<String, String> newHexs = new HashMap<>();
-
-                    FileCollection files = task.getInputs().getFiles();
-                    for (File file : files) {
-                        String filePath = file.getAbsolutePath();
-                        if (filePath.endsWith(".jar")) {
-                            processJar(applicationName, file, newHexs, patchGenerator);
-                        }
-                        if (filePath.endsWith(".class")) {
-                            processClass(applicationName, applicationVariant.getDirName(), file, newHexs,
-                                    patchGenerator);
-                        }
-                    }
-
-                    Iterator<Map.Entry<String, String>> iterator = newHexs.entrySet().iterator();
-                    while (iterator.hasNext()) {
-                        Map.Entry<String, String> next = iterator.next();
-                        if (next == null) {
-                            continue;
-                        }
-                        System.out.println(TAG + "md5 = " + next.getKey() + " : " + next.getValue());
-                    }
-
-                    //类的md5集合 写入到文件
-                    Utils.writeHex(newHexs, hexFile);
-                    try {
-                        //生成补丁
-                        patchGenerator.generate();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    processClassWithMapping(task, finalOutputFile);
+                    //如果是R8-transformClassesAndResourcesWithR8For,那么会找不到transformClassesWithDexBuilderFor
+                    //所以class文件可以从这里获取，我们在gradle.properties中禁用R8,这样不妨碍我们测试
+                    processClassWithAsmAndDoPatch(project, applicationVariant, patchExtension, task, hexFile, patchClassFile, patchFile);
                 }
             });
-            Task task = project.getTasks().create("patch" + capitalizeName);
-            task.setGroup("patch");
-            task.dependsOn(dexTask);
         } else {
-            System.out.println(TAG + "dex task is null");
+            System.out.println(TAG + "proguardTask  is null");
+        }
+    }
+
+    private void processClassWithMapping(Task proguardTask, File outPutFile) {
+        if (proguardTask != null) {
+            //备份本次的mapping文件
+            final File mappingBak = new File(outPutFile, "mapping.txt");
+            FileCollection files = proguardTask.getOutputs().getFiles();
+            for (File file : files) {
+                System.out.println(TAG + "proguard output file = " + file.getPath());
+                if (file.getName().endsWith("mapping.txt")) {
+                    try {
+                        FileUtils.copyFile(file, mappingBak);
+                        System.out.println(TAG + " mapping: " + mappingBak.getCanonicalPath());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        System.out.println(TAG + " copy mapping: " + e);
+                    }
+                    break;
+                }
+            }
+            //将上次混淆的mapping应用到本次,如果没有上次的混淆文件就没操作
+            if (mappingBak.exists()) {
+                TransformTask transformTask = (TransformTask) proguardTask;
+                Transform transform = transformTask.getTransform();
+                System.out.println(TAG + "applying mapping.txt, transformTask = " + transformTask + " transform = " + transform);
+                if (transform instanceof ProGuardTransform) {
+                    System.out.println(TAG + "applying mapping using ProGuardTransform");
+                    ProGuardTransform proGuardTransform = (ProGuardTransform) transformTask.getTransform();
+                    proGuardTransform.applyTestedMapping(mappingBak);
+                } else if (transform instanceof R8Transform) {
+                    System.out.println(TAG + "applying mapping using R8Transform");
+                    R8Transform r8Transform = (R8Transform) transformTask.getTransform();
+                    r8Transform.setMainDexListOutput(mappingBak);
+                }
+            }
+        }
+    }
+
+    private void processClassWithAsmAndDoPatch(final Project project, final ApplicationVariant applicationVariant,
+                                               final PatchExtension patchExtension, Task task, File hexFile, File patchClassFile, File patchFile) {
+        //插桩 记录md5并对比
+        PatchGenerator patchGenerator = new PatchGenerator(project, patchFile,
+                patchClassFile, hexFile);
+        //用户配置的application，实际上可以解析manifest自动获取，但是java实现太麻烦了，干脆让用户自己配置
+        String applicationName = patchExtension.applicationName;
+        //windows下 目录输出是  xx\xx\  ,linux下是  /xx/xx ,把 . 替换成平台相关的斜杠
+        applicationName = applicationName.replaceAll("\\.",
+                Matcher.quoteReplacement(File.separator));
+        System.out.println(TAG + "applicationName = " + applicationName + " applicationName = " + applicationName);
+
+        //记录类的md5
+        Map<String, String> newHexs = new HashMap<>();
+
+        FileCollection files = task.getInputs().getFiles();
+        for (File file : files) {
+            String filePath = file.getAbsolutePath();
+            if (filePath.endsWith(".jar")) {
+                //processJar(applicationName, file, newHexs, patchGenerator);
+            }
+            if (filePath.endsWith(".class")) {
+                processClass(applicationName, applicationVariant.getDirName(), file, newHexs,
+                        patchGenerator);
+            }
+        }
+
+        Iterator<Map.Entry<String, String>> iterator = newHexs.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, String> next = iterator.next();
+            if (next == null) {
+                continue;
+            }
+            System.out.println(TAG + "md5 = " + next.getKey() + " : " + next.getValue());
+        }
+
+        //类的md5集合 写入到文件
+        Utils.writeHex(newHexs, hexFile);
+        try {
+            //生成补丁
+            patchGenerator.generate();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     private void processClass(String applicationName, String dirName, File file, Map<String, String> newHexs, PatchGenerator patchGenerator) {
-        String filePath = file.getAbsolutePath();
         //注意这里的filePath包含了目录+包名+类名，所以去掉目录
+        ///Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/javac/debug/classes/com/rzm/testapplication/okhttp/OkHttpActivity.class
+        String filePath = file.getAbsolutePath();
+        //className = classes/com/rzm/testapplication/retrofit/User.class
+        dirName = dirName + "/classes";
+        //注意这里的filePath包含了目录+包名+类名，所以去掉目录\
         String className = filePath.split(dirName)[1].substring(1);
-
-        System.out.println(TAG + "processClass filePath = " + filePath + " className = " + className);
-
         //注意这里的filePath包含了目录+包名+类名，所以去掉目录
         //application或者android support我们不管
         if (className.startsWith("com/rzm/testapplication/Application") || Utils.isAndroidClass(className)) {
-            System.out.println(TAG + "processClass className = " + className + ", return");
             return;
         }
-        FileInputStream fis = null;
-        FileOutputStream fos = null;
+        System.out.println(TAG + "processClass className = " + className + " dirName = " + dirName);
         try {
-            fis = new FileInputStream(filePath);
-            fos = new FileOutputStream(filePath);
-            byte[] bytes = AsmUtils.doInsertWithAsm(fis, className);
-            String hex = Utils.hex(bytes);
+            FileInputStream is = new FileInputStream(filePath);
+            //执行插桩
+            byte[] byteCode = AsmUtils.doInsertWithAsm(is, className);
+            String hex = Utils.hex(byteCode);
+            is.close();
+
+            FileOutputStream os = new FileOutputStream(filePath);
+            os.write(byteCode);
+            os.close();
+
             newHexs.put(className, hex);
-            fos.write(bytes);
             //对比缓存的md5，不一致则放入补丁
-            patchGenerator.checkClass(className, hex, bytes);
+            patchGenerator.checkClass(className, hex, byteCode);
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            try {
-                if (fos != null)
-                    fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                if (fis != null)
-                    fis.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 

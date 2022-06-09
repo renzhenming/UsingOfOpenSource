@@ -15,9 +15,37 @@ import java.io.InputStream;
 
 public class AsmUtils {
 
+    public static byte[] referHackWhenInit(InputStream inputStream) throws IOException {
+        ClassReader cr = new ClassReader(inputStream);
+        ClassWriter cw = new ClassWriter(cr, 0);
+        ClassVisitor cv = new ClassVisitor(Opcodes.ASM5, cw) {
+            @Override
+            public MethodVisitor visitMethod(int access, final String name, String desc,
+                                             String signature, String[] exceptions) {
+
+                MethodVisitor mv = super.visitMethod(access, name, desc, signature, exceptions);
+                mv = new MethodVisitor(api, mv) {
+                    @Override
+                    public void visitInsn(int opcode) {
+                        //在构造方法中插入AntilazyLoad引用
+                        if ("<init>".equals(name) && opcode == Opcodes.RETURN) {
+                            super.visitLdcInsn(Type.getType("Lcom/enjoy/patch/hack/AntilazyLoad;"));
+                        }
+                        super.visitInsn(opcode);
+                    }
+                };
+                return mv;
+            }
+
+        };
+        cr.accept(cv, 0);
+        return cw.toByteArray();
+    }
+
     public static byte[] doInsertWithAsm(InputStream inputStream, final String className) throws IOException {
-        ClassWriter writer = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
+
         ClassReader reader = new ClassReader(inputStream);
+        ClassWriter writer = new ClassWriter(reader, ClassWriter.COMPUTE_FRAMES);
         reader.accept(new ClassVisitor(Opcodes.ASM5, writer) {
             @Override
             public MethodVisitor visitMethod(int access, final String name, String desc, String signature, String[] exceptions) {

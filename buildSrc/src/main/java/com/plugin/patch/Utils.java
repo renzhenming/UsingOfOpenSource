@@ -44,7 +44,25 @@ public class Utils {
 
     public static boolean isAndroidClass(String filePath) {
         return filePath.startsWith("android") ||
-                filePath.startsWith("androidx");
+                filePath.startsWith("androidx") ||
+                filePath.contains("/google/android/") ||
+                filePath.contains("R.class") ||
+                filePath.contains("R$id.class") ||
+                filePath.contains("R$styleable.class") ||
+                filePath.contains("R$style.class") ||
+                filePath.contains("R$string.class") ||
+                filePath.contains("R$color.class") ||
+                filePath.contains("R$dimen.class") ||
+                filePath.contains("R$integer.class") ||
+                filePath.contains("R$layout.class") ||
+                filePath.contains("R$attr.class") ||
+                filePath.contains("R$drawable.class") ||
+                filePath.contains("R$bool.class") ||
+                filePath.contains("R$animator.class")||
+                filePath.contains("R$interpolator.class")||
+                filePath.contains("R$anim.class")||
+                filePath.contains("R$mipmap.class");
+
     }
 
 

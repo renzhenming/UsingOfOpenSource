@@ -96,202 +96,202 @@ dependencies {
 
 }
 //gradle执行会解析build.gradle文件，afterEvaluate表示在解析完成之后再执行我们的代码
-afterEvaluate {
-    android.getApplicationVariants().all { variant ->
-        String variantName = variant.name
-        String capitalizedName = variantName.capitalize()
-        println("---------variants = " + variantName + " capitalizedName = " + capitalizedName)
-        //这就是打包时，把jar和class打包成dex的任务
-        Task dexTask = project.getTasks().findByName("transformClassesWithDexBuilderFor" + capitalizedName)
-        println("---------variants = " + variantName + " transformClassesWithDexBuilderFor = " + dexTask)
-        if (dexTask != null) {
-            //在生成dex之前执行插桩
-            dexTask.doFirst {
-                FileCollection fileCollection = dexTask.getInputs().getFiles()
-
-                for (File file : fileCollection) {
-                    println("---------file = " + file.getName())
-                    String filePath = file.getAbsolutePath()
-                    if (filePath.endsWith(".jar")) {
-                        //依赖的库会以jar包形式传过来，对依赖库也执行插桩
-//                    processJar(file)
-                    } else if (filePath.endsWith(".class")) {
-                        //主要是我们自己写的app模块中的代码
-                        processClass(variant.getDirName(), file)
-                    }
-                }
-            }
-        }
-    }
-}
-
-static void processJar(File file) {
-    try {
-        //  无论是windows还是linux jar包都是 /
-        File bakJar = new File(file.getParent(), file.getName() + ".bak");
-        JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream(bakJar));
-
-        JarFile jarFile = new JarFile(file);
-        Enumeration<JarEntry> entries = jarFile.entries();
-        while (entries.hasMoreElements()) {
-            JarEntry jarEntry = entries.nextElement();
-
-            // 读jar包中的一个文件 ：class
-            jarOutputStream.putNextEntry(new JarEntry(jarEntry.getName()));
-            InputStream is = jarFile.getInputStream(jarEntry);
-
-            String className = jarEntry.getName();
-            println("---------processJar = " + className)
-            if (className.endsWith(".class") && !className.startsWith("com/rzm/testapplication/Application")
-                    && !isAndroidClass(className)) {
-                byte[] byteCode = doWithAsm(is, className);
-                jarOutputStream.write(byteCode);
-            } else {
-                //输出到临时文件
-                jarOutputStream.write(IOUtils.toByteArray(is));
-            }
-            jarOutputStream.closeEntry();
-        }
-        jarOutputStream.close();
-        jarFile.close();
-        file.delete();
-        bakJar.renameTo(file);
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-}
-
-static void processClass(String dirName, File file) {
-    //注意这里的filePath包含了目录+包名+类名，所以去掉目录
-    ///Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/javac/debug/classes/com/rzm/testapplication/okhttp/OkHttpActivity.class
-    String filePath = file.getAbsolutePath()
-    println("---------processClass dirName = " + dirName + " filePath = " + filePath)
-
-    //className = classes/com/rzm/testapplication/retrofit/User.class
-    dirName = dirName + "/classes"
-    String className = filePath.split(dirName)[1].substring(1);
-    println("---------processClass dirName = " + dirName + " filePath = " + filePath + " \n className = " + className)
-
-    //com.rzm.testapplication.Application
-    if (className.startsWith("com/rzm/testapplication/Application") || isAndroidClass(className)) {
-        println("---------processClass className = " + className + " return")
-        return
-    }
-
-    try {
-        FileInputStream is = new FileInputStream(filePath)
-
-        byte[] bytes = doWithAsm(is, className)
-
-        FileOutputStream fos = new FileOutputStream(filePath)
-        fos.write(bytes)
-        fos.close()
-    } catch (Exception e) {
-        e.printStackTrace()
-    }
-}
-
-static byte[] doWithAsm(InputStream inputStream, String className) {
-    ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES)
-    ClassReader cr = new ClassReader(inputStream)
-
-    ClassVisitor cv = new ClassVisitor(Opcodes.ASM5, cw) {
-        @Override
-        public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
-            println("---------access = " + access + " name = " + name + " descriptor = " + descriptor + " signature = " + signature + " exceptions = " + exceptions);
-            MethodVisitor methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions);
-            MyMethodVisitor myMethodVisitor = new MyMethodVisitor(Opcodes.ASM5, methodVisitor, access, name, descriptor, className);
-            return myMethodVisitor
-        }
-    };
-
-    cr.accept(cv, ClassReader.EXPAND_FRAMES)
-
-    byte[] bytes = cw.toByteArray()
-
-    return bytes
-}
-
-class MyMethodVisitor extends AdviceAdapter {
-
-    private int start
-    private String className
-    private String methodName
-
-    protected MyMethodVisitor(int api, MethodVisitor methodVisitor, int access, String name, String descriptor, String className) {
-        super(api, methodVisitor, access, name, descriptor)
-        this.className = className
-        this.methodName = name
-    }
-
-    @Override
-    protected void onMethodEnter() {
-        super.onMethodEnter()
-        //long start = System.currentTimeMillis()
-        invokeStatic(Type.getType("Ljava/lang/System;"), new Method("currentTimeMillis", "()J"))
-        start = newLocal(Type.LONG_TYPE)
-        storeLocal(start)
-    }
-
-    /**
-     * 生成
-     * long end = System.currentTimeMillis();
-     * System.out.println("consume = " + (end - start));
-     *
-     * @param opcode
-     */
-    @Override
-    protected void onMethodExit(int opcode) {
-        super.onMethodExit(opcode);
-        //long end = System.currentTimeMillis();
-        //18: invokestatic  #5                  // Method java/lang/System.currentTimeMillis:()J
-        invokeStatic(Type.getType("Ljava/lang/System;"), new Method("currentTimeMillis", "()J"));
-        //21: lstore_3
-        int end = newLocal(Type.LONG_TYPE);
-        storeLocal(end);
-
-        //获取System的静态方法out,out的类型是PrintStream
-        //22: getstatic     #11                 // Field java/lang/System.out:Ljava/io/PrintStream;
-        getStatic(Type.getType("Ljava/lang/System;"), "out", Type.getType("Ljava/io/PrintStream;"));
-
-        //拼接字符串，底层用的StringBuilder
-        //25: new           #12                 // class java/lang/StringBuilder
-        newInstance(Type.getType("Ljava/lang/StringBuilder;"));
-
-        //28: dup
-        dup();
-
-        //29: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
-        invokeConstructor(Type.getType("Ljava/lang/StringBuilder;"), new Method("<init>", "()V"));
-
-        //32: ldc           #14                 // String consume =
-        visitLdcInsn(className + " method: " + methodName + ", consume = ");
-
-        //34: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;"));
-
-        //37: lload_3
-        loadLocal(end);
-
-        //38: lload_1
-        loadLocal(start);
-
-        //39: lsub
-        math(SUB, Type.LONG_TYPE);
-
-        //40: invokevirtual #16                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
-        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("append", "(J)Ljava/lang/StringBuilder;"));
-
-        //43: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("toString", "()Ljava/lang/String;"));
-
-        //46: invokevirtual #18                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
-        invokeVirtual(Type.getType("Ljava/io/PrintStream;"), new Method("println", "(Ljava/lang/String;)V"));
-    }
-}
-
-
-static boolean isAndroidClass(String filePath) {
-    return filePath.startsWith("android") ||
-            filePath.startsWith("androidx");
-}
+//afterEvaluate {
+//    android.getApplicationVariants().all { variant ->
+//        String variantName = variant.name
+//        String capitalizedName = variantName.capitalize()
+//        println("---------variants = " + variantName + " capitalizedName = " + capitalizedName)
+//        //这就是打包时，把jar和class打包成dex的任务
+//        Task dexTask = project.getTasks().findByName("transformClassesWithDexBuilderFor" + capitalizedName)
+//        println("---------variants = " + variantName + " transformClassesWithDexBuilderFor = " + dexTask)
+//        if (dexTask != null) {
+//            //在生成dex之前执行插桩
+//            dexTask.doFirst {
+//                FileCollection fileCollection = dexTask.getInputs().getFiles()
+//
+//                for (File file : fileCollection) {
+//                    println("---------file = " + file.getName())
+//                    String filePath = file.getAbsolutePath()
+//                    if (filePath.endsWith(".jar")) {
+//                        //依赖的库会以jar包形式传过来，对依赖库也执行插桩
+////                    processJar(file)
+//                    } else if (filePath.endsWith(".class")) {
+//                        //主要是我们自己写的app模块中的代码
+//                        processClass(variant.getDirName(), file)
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//static void processJar(File file) {
+//    try {
+//        //  无论是windows还是linux jar包都是 /
+//        File bakJar = new File(file.getParent(), file.getName() + ".bak");
+//        JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream(bakJar));
+//
+//        JarFile jarFile = new JarFile(file);
+//        Enumeration<JarEntry> entries = jarFile.entries();
+//        while (entries.hasMoreElements()) {
+//            JarEntry jarEntry = entries.nextElement();
+//
+//            // 读jar包中的一个文件 ：class
+//            jarOutputStream.putNextEntry(new JarEntry(jarEntry.getName()));
+//            InputStream is = jarFile.getInputStream(jarEntry);
+//
+//            String className = jarEntry.getName();
+//            println("---------processJar = " + className)
+//            if (className.endsWith(".class") && !className.startsWith("com/rzm/testapplication/Application")
+//                    && !isAndroidClass(className)) {
+//                byte[] byteCode = doWithAsm(is, className);
+//                jarOutputStream.write(byteCode);
+//            } else {
+//                //输出到临时文件
+//                jarOutputStream.write(IOUtils.toByteArray(is));
+//            }
+//            jarOutputStream.closeEntry();
+//        }
+//        jarOutputStream.close();
+//        jarFile.close();
+//        file.delete();
+//        bakJar.renameTo(file);
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//    }
+//}
+//
+//static void processClass(String dirName, File file) {
+//    //注意这里的filePath包含了目录+包名+类名，所以去掉目录
+//    ///Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/javac/debug/classes/com/rzm/testapplication/okhttp/OkHttpActivity.class
+//    String filePath = file.getAbsolutePath()
+//    println("---------processClass dirName = " + dirName + " filePath = " + filePath)
+//
+//    //className = classes/com/rzm/testapplication/retrofit/User.class
+//    dirName = dirName + "/classes"
+//    String className = filePath.split(dirName)[1].substring(1);
+//    println("---------processClass dirName = " + dirName + " filePath = " + filePath + " \n className = " + className)
+//
+//    //com.rzm.testapplication.Application
+//    if (className.startsWith("com/rzm/testapplication/Application") || isAndroidClass(className)) {
+//        println("---------processClass className = " + className + " return")
+//        return
+//    }
+//
+//    try {
+//        FileInputStream is = new FileInputStream(filePath)
+//
+//        byte[] bytes = doWithAsm(is, className)
+//
+//        FileOutputStream fos = new FileOutputStream(filePath)
+//        fos.write(bytes)
+//        fos.close()
+//    } catch (Exception e) {
+//        e.printStackTrace()
+//    }
+//}
+//
+//static byte[] doWithAsm(InputStream inputStream, String className) {
+//    ClassWriter cw = new ClassWriter(ClassWriter.COMPUTE_FRAMES)
+//    ClassReader cr = new ClassReader(inputStream)
+//
+//    ClassVisitor cv = new ClassVisitor(Opcodes.ASM5, cw) {
+//        @Override
+//        public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
+//            println("---------access = " + access + " name = " + name + " descriptor = " + descriptor + " signature = " + signature + " exceptions = " + exceptions);
+//            MethodVisitor methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions);
+//            MyMethodVisitor myMethodVisitor = new MyMethodVisitor(Opcodes.ASM5, methodVisitor, access, name, descriptor, className);
+//            return myMethodVisitor
+//        }
+//    };
+//
+//    cr.accept(cv, ClassReader.EXPAND_FRAMES)
+//
+//    byte[] bytes = cw.toByteArray()
+//
+//    return bytes
+//}
+//
+//class MyMethodVisitor extends AdviceAdapter {
+//
+//    private int start
+//    private String className
+//    private String methodName
+//
+//    protected MyMethodVisitor(int api, MethodVisitor methodVisitor, int access, String name, String descriptor, String className) {
+//        super(api, methodVisitor, access, name, descriptor)
+//        this.className = className
+//        this.methodName = name
+//    }
+//
+//    @Override
+//    protected void onMethodEnter() {
+//        super.onMethodEnter()
+//        //long start = System.currentTimeMillis()
+//        invokeStatic(Type.getType("Ljava/lang/System;"), new Method("currentTimeMillis", "()J"))
+//        start = newLocal(Type.LONG_TYPE)
+//        storeLocal(start)
+//    }
+//
+//    /**
+//     * 生成
+//     * long end = System.currentTimeMillis();
+//     * System.out.println("consume = " + (end - start));
+//     *
+//     * @param opcode
+//     */
+//    @Override
+//    protected void onMethodExit(int opcode) {
+//        super.onMethodExit(opcode);
+//        //long end = System.currentTimeMillis();
+//        //18: invokestatic  #5                  // Method java/lang/System.currentTimeMillis:()J
+//        invokeStatic(Type.getType("Ljava/lang/System;"), new Method("currentTimeMillis", "()J"));
+//        //21: lstore_3
+//        int end = newLocal(Type.LONG_TYPE);
+//        storeLocal(end);
+//
+//        //获取System的静态方法out,out的类型是PrintStream
+//        //22: getstatic     #11                 // Field java/lang/System.out:Ljava/io/PrintStream;
+//        getStatic(Type.getType("Ljava/lang/System;"), "out", Type.getType("Ljava/io/PrintStream;"));
+//
+//        //拼接字符串，底层用的StringBuilder
+//        //25: new           #12                 // class java/lang/StringBuilder
+//        newInstance(Type.getType("Ljava/lang/StringBuilder;"));
+//
+//        //28: dup
+//        dup();
+//
+//        //29: invokespecial #13                 // Method java/lang/StringBuilder."<init>":()V
+//        invokeConstructor(Type.getType("Ljava/lang/StringBuilder;"), new Method("<init>", "()V"));
+//
+//        //32: ldc           #14                 // String consume =
+//        visitLdcInsn(className + " method: " + methodName + ", consume = ");
+//
+//        //34: invokevirtual #15                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+//        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("append", "(Ljava/lang/String;)Ljava/lang/StringBuilder;"));
+//
+//        //37: lload_3
+//        loadLocal(end);
+//
+//        //38: lload_1
+//        loadLocal(start);
+//
+//        //39: lsub
+//        math(SUB, Type.LONG_TYPE);
+//
+//        //40: invokevirtual #16                 // Method java/lang/StringBuilder.append:(J)Ljava/lang/StringBuilder;
+//        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("append", "(J)Ljava/lang/StringBuilder;"));
+//
+//        //43: invokevirtual #17                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+//        invokeVirtual(Type.getType("Ljava/lang/StringBuilder;"), new Method("toString", "()Ljava/lang/String;"));
+//
+//        //46: invokevirtual #18                 // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+//        invokeVirtual(Type.getType("Ljava/io/PrintStream;"), new Method("println", "(Ljava/lang/String;)V"));
+//    }
+//}
+//
+//
+//static boolean isAndroidClass(String filePath) {
+//    return filePath.startsWith("android") ||
+//            filePath.startsWith("androidx");
+//}
