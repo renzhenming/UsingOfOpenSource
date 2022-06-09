@@ -1,3 +1,4 @@
+import com.plugin.patch.Patch
 import org.apache.commons.compress.utils.IOUtils
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
@@ -14,6 +15,16 @@ import java.util.jar.JarOutputStream
 
 plugins {
     id 'com.android.application'
+}
+
+plugins {
+    //id指的就是resources.META-INF.gradle.plugins中的文件名"com.plugin.patch"
+    id 'com.plugin.patch'
+}
+
+patch {
+    debugOn true
+    applicationName "com.rzm.testapplication"
 }
 
 android {
@@ -38,7 +49,12 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -87,6 +103,7 @@ afterEvaluate {
         println("---------variants = " + variantName + " capitalizedName = " + capitalizedName)
         //这就是打包时，把jar和class打包成dex的任务
         Task dexTask = project.getTasks().findByName("transformClassesWithDexBuilderFor" + capitalizedName)
+        println("---------variants = " + variantName + " transformClassesWithDexBuilderFor = " + dexTask)
         if (dexTask != null) {
             //在生成dex之前执行插桩
             dexTask.doFirst {
