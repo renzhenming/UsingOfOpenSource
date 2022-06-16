@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.rzm.testapplication.arouter.ARouterActivity;
 import com.rzm.testapplication.glide.GlideActivity;
+import com.rzm.testapplication.java_api.TestJavaApiActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
 
@@ -34,5 +35,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void testARouter(View view) {
         startActivity(new Intent(getApplicationContext(), ARouterActivity.class));
+    }
+
+    public void testJavaApi(View view) {
+        startActivity(new Intent(getApplicationContext(), TestJavaApiActivity.class));
     }
 }
