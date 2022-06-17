@@ -13,8 +13,6 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        LeakCanary.INSTANCE.
-
         UncaughtCrashHandler.getInstance().init(this);
 
         if (BuildConfig.DEBUG) {           // These two lines must be written before init, otherwise these configurations will be invalid in the init process
