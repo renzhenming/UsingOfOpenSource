@@ -23,5 +23,10 @@
         android:onClick="sparsearray"
         android:text="SparseArray"
         android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:onClick="linkedlist"
+        android:text="LinkedList"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

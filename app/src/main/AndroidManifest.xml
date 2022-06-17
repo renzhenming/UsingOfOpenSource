@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".leakcanary.LeakCanaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.LinkedListActivity"
+            android:exported="false" />
+        <activity
             android:name=".java_api.SparseArrayActivity"
             android:exported="false" />
         <activity

@@ -5,11 +5,15 @@ import android.content.res.Resources;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.rzm.exceptionhandler.UncaughtCrashHandler;
 
+import leakcanary.LeakCanary;
+
 public class Application extends android.app.Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        LeakCanary.INSTANCE.
 
         UncaughtCrashHandler.getInstance().init(this);
 

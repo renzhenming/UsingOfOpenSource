@@ -9,6 +9,7 @@ import android.view.View;
 import com.rzm.testapplication.arouter.ARouterActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
+import com.rzm.testapplication.leakcanary.LeakCanaryActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
 
@@ -18,6 +19,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+
+    public void testLeakCanary(View view) {
+        startActivity(new Intent(getApplicationContext(), LeakCanaryActivity.class));
     }
 
 

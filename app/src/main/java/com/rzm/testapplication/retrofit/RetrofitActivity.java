@@ -66,17 +66,7 @@ public class RetrofitActivity extends AppCompatActivity {
                 .build();
 
         NetWorkInterface service = retrofit.create(NetWorkInterface.class);
-        Call<List<User>> repos = service.listUsers("user");
-        repos.enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-
-            }
-        });
+//        Call<String> repos = service.listUsers();
+//        repos.enqueue(null);
     }
 }

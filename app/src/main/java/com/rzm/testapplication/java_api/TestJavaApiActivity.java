@@ -28,4 +28,8 @@ public class TestJavaApiActivity extends AppCompatActivity {
     public void sparsearray(View view) {
         startActivity(new Intent(getApplicationContext(), SparseArrayActivity.class));
     }
+
+    public void linkedlist(View view) {
+        startActivity(new Intent(getApplicationContext(), LinkedListActivity.class));
+    }
 }
