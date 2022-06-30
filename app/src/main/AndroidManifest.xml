@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".fragment.TestFragmentActivity"
+            android:exported="false" />
+        <activity
             android:name=".leakcanary.LeakCanaryActivity"
             android:exported="false" />
         <activity

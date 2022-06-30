@@ -8,6 +8,11 @@
 
     <Button
         android:layout_width="match_parent"
+        android:onClick="testFragment"
+        android:text="fragment"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
         android:onClick="testLeakCanary"
         android:text="LeakCanary"
         android:layout_height="wrap_content" />

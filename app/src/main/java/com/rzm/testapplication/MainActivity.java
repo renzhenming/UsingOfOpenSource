@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.rzm.testapplication.arouter.ARouterActivity;
+import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
 import com.rzm.testapplication.leakcanary.LeakCanaryActivity;
@@ -44,5 +45,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void testJavaApi(View view) {
         startActivity(new Intent(getApplicationContext(), TestJavaApiActivity.class));
+    }
+
+    public void testFragment(View view) {
+        startActivity(new Intent(getApplicationContext(), TestFragmentActivity.class));
     }
 }

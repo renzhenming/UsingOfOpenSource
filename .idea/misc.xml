@@ -8,9 +8,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_arouter.xml" value="0.20380434782608695" />
+        <entry key="app/src/main/res/layout/activity_array_list.xml" value="0.10131712259371833" />
         <entry key="app/src/main/res/layout/activity_glide.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_test_adapter.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_test_fragment.xml" value="0.14990942028985507" />
         <entry key="app/src/main/res/layout/activity_test_java_api.xml" value="0.16168478260869565" />
+        <entry key="app/src/main/res/layout/fragment_test.xml" value="0.14990942028985507" />
+        <entry key="app/src/main/res/layout/fragment_test_B.xml" value="0.14990942028985507" />
       </map>
     </option>
   </component>
