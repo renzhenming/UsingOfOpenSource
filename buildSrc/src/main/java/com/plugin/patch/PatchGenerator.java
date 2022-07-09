@@ -94,7 +94,7 @@ public class PatchGenerator {
         project.exec(new Action<ExecSpec>() {
             @Override
             public void execute(ExecSpec execSpec) {
-                execSpec.commandLine(dxPath,"--dex",patch,jarFile.getAbsolutePath());
+                execSpec.commandLine(dxPath, "--dex", patch, jarFile.getAbsolutePath());
             }
         });
         jarFile.delete();

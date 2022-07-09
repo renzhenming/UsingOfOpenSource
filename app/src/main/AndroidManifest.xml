@@ -13,6 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".java_api.SemaphoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.CyclicBarrierActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.CountDownLatchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.ReentrantLockActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.LinkedBlockingQueueActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.CopyOnWritArrayListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".java_api.ThreadLocalActivity"
+            android:exported="false" />
+        <activity
             android:name=".fragment.TestFragmentActivity"
             android:exported="false" />
         <activity

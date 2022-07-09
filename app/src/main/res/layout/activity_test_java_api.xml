@@ -1,32 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".java_api.TestJavaApiActivity">
+    android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:onClick="arraylist"
-        android:text="ArrayList"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="hashmap"
-        android:text="HashMap"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".java_api.TestJavaApiActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="sparsearray"
-        android:text="SparseArray"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="linkedlist"
-        android:text="LinkedList"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="semaphore"
+            android:text="semaphore" />
 
-</LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="copyOnWrite"
+            android:text="copyOnWrite" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="cyclicBarrier"
+            android:text="cyclicBarrier" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="countDownLatch"
+            android:text="countDownLatch" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="reentrantLock"
+            android:text="reentrantLock" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="linkedBlockingQueue"
+            android:text="linkedBlockingQueue" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="threadlocal"
+            android:text="threadlocal" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="arraylist"
+            android:text="ArrayList" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="hashmap"
+            android:text="HashMap" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="sparsearray"
+            android:text="SparseArray" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="linkedlist"
+            android:text="LinkedList" />
+
+    </LinearLayout>
+</ScrollView>

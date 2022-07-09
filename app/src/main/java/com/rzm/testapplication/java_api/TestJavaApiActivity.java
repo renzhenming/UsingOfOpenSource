@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.rzm.testapplication.R;
-import com.rzm.testapplication.glide.GlideActivity;
 
 public class TestJavaApiActivity extends AppCompatActivity {
 
@@ -15,6 +14,27 @@ public class TestJavaApiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_java_api);
+    }
+
+    public void semaphore(View view) {
+        startActivity(new Intent(getApplicationContext(), SemaphoreActivity.class));
+    }
+
+    public void cyclicBarrier(View view) {
+        startActivity(new Intent(getApplicationContext(), CyclicBarrierActivity.class));
+    }
+
+    public void countDownLatch(View view) {
+        startActivity(new Intent(getApplicationContext(), CountDownLatchActivity.class));
+    }
+
+    public void reentrantLock(View view) {
+        startActivity(new Intent(getApplicationContext(), ReentrantLockActivity.class));
+    }
+
+
+    public void linkedBlockingQueue(View view) {
+        startActivity(new Intent(getApplicationContext(), LinkedBlockingQueueActivity.class));
     }
 
     public void arraylist(View view) {
@@ -31,5 +51,13 @@ public class TestJavaApiActivity extends AppCompatActivity {
 
     public void linkedlist(View view) {
         startActivity(new Intent(getApplicationContext(), LinkedListActivity.class));
+    }
+
+    public void threadlocal(View view) {
+        startActivity(new Intent(getApplicationContext(), ThreadLocalActivity.class));
+    }
+
+    public void copyOnWrite(View view) {
+        startActivity(new Intent(getApplicationContext(), CopyOnWritArrayListActivity.class));
     }
 }

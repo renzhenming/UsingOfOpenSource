@@ -7,13 +7,28 @@ import android.os.Bundle;
 
 import com.rzm.testapplication.R;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.Proxy;
+import java.util.List;
 
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.Dispatcher;
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.internal.io.FileSystem;
+import okio.Sink;
+import okio.Source;
 
 public class OkHttpActivity extends AppCompatActivity {
 
@@ -22,9 +37,39 @@ public class OkHttpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ok_http);
 
-        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client = new OkHttpClient.Builder()
+                .dispatcher(new Dispatcher())
+                .followRedirects(true) //允许重定向
+                .proxy(Proxy.NO_PROXY)
+                .cache(new Cache(new File(""), 100))
+                .cookieJar(new CookieJar() {
+                    @Override
+                    public void saveFromResponse(@NonNull HttpUrl httpUrl, @NonNull List<Cookie> list) {
+
+                    }
+
+                    @NonNull
+                    @Override
+                    public List<Cookie> loadForRequest(@NonNull HttpUrl httpUrl) {
+                        return null;
+                    }
+                })
+                .followSslRedirects(true) //如果重定向在http到https之间切换，也允许，false则是不允许
+                .build();
+
+
+        RequestBody body = new FormBody.Builder()
+                .add("weaid", "1")
+                .add("date", "2018-08-13")
+                .add("appkey", "10003")
+                .add("sign", "b59bc3ef6191eb9f747dd4e83c99f2a4")
+                .add("format", "json")
+                .build();
+
         Request request = new Request.Builder()
                 .url("https://www.baidu.com")
+
+                .post(body)
                 .build();
 
         new Thread(new Runnable() {

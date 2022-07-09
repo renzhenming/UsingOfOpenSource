@@ -58,9 +58,9 @@ public class Utils {
                 filePath.contains("R$attr.class") ||
                 filePath.contains("R$drawable.class") ||
                 filePath.contains("R$bool.class") ||
-                filePath.contains("R$animator.class")||
-                filePath.contains("R$interpolator.class")||
-                filePath.contains("R$anim.class")||
+                filePath.contains("R$animator.class") ||
+                filePath.contains("R$interpolator.class") ||
+                filePath.contains("R$anim.class") ||
                 filePath.contains("R$mipmap.class");
 
     }
