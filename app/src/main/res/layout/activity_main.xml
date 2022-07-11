@@ -1,51 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:onClick="testFragment"
-        android:text="fragment"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testLeakCanary"
-        android:text="LeakCanary"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testJavaApi"
-        android:text="java api"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testFragment"
+            android:text="fragment" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testOkhttp"
-        android:text="okhttp"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testLeakCanary"
+            android:text="LeakCanary" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testGlide"
-        android:text="glide"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testJavaApi"
+            android:text="java api" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testRetrofit"
-        android:text="retrofit"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testAndroidApi"
+            android:text="android api" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:onClick="testARouter"
-        android:text="ARouter"
-        android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testOkhttp"
+            android:text="okhttp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testGlide"
+            android:text="glide" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testRetrofit"
+            android:text="retrofit" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testARouter"
+            android:text="ARouter" />
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -98,6 +98,9 @@ dependencies {
 
     implementation 'com.github.renzhenming:CrashHanlder:1.0.0'
 
+    //ProcessLifecycleOwner需要用到
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
 
 }
 //gradle执行会解析build.gradle文件，afterEvaluate表示在解析完成之后再执行我们的代码
