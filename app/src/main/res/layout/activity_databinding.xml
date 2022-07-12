@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- layout是DataBinding 管理了 我们整个布局了 -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <!-- 不要被迷惑了，不是反射 -->
+        <!-- setUser函数  setAa -->
+        <variable
+            name="user"
+            type="com.rzm.testapplication.android_api.databinding.User" />
+    </data>
+    <!-- 上面的是 DataBinding 内部用的， 注意：Android View体系 不认识  -->
+
+
+    <!-- Android View体系的
+         下面的所有内容，会给 Android绘制
+     -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- @=  View -> Model  一向 -->
+        <!-- EditText -->
+        <EditText
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={user.name}"
+            android:textSize="50sp" />
+
+        <EditText
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@={user.pwd}"
+            android:textSize="50sp" />
+    </LinearLayout>
+
+</layout>

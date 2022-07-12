@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".android_api.databinding.DatabindingActivity"
+            android:configChanges=""
+            android:exported="false" />
+        <activity
             android:name=".android_api.livedata.LiveDataActivity"
             android:exported="false" />
         <activity
