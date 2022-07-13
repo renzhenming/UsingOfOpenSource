@@ -20,6 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Converter;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitActivity extends AppCompatActivity {
 
@@ -44,29 +45,23 @@ public class RetrofitActivity extends AppCompatActivity {
                         return null;
                     }
                 })
-                .addConverterFactory(new Converter.Factory() {
-                    @Nullable
-                    @Override
-                    public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-                        return super.responseBodyConverter(type, annotations, retrofit);
-                    }
-
-                    @Nullable
-                    @Override
-                    public Converter<?, RequestBody> requestBodyConverter(Type type, Annotation[] parameterAnnotations, Annotation[] methodAnnotations, Retrofit retrofit) {
-                        return super.requestBodyConverter(type, parameterAnnotations, methodAnnotations, retrofit);
-                    }
-
-                    @Nullable
-                    @Override
-                    public Converter<?, String> stringConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
-                        return super.stringConverter(type, annotations, retrofit);
-                    }
-                })
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         NetWorkInterface service = retrofit.create(NetWorkInterface.class);
-//        Call<String> repos = service.listUsers();
-//        repos.enqueue(null);
+        //ExecutorCallbackCall == Call
+        Call<String> repos = service.listUsers();
+        repos.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                String body = response.body();
+                okhttp3.Response raw = response.raw();
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+
+            }
+        });
     }
 }

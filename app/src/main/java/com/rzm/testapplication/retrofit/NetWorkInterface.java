@@ -7,4 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface NetWorkInterface {
+
+    @GET
+    Call<String> listUsers();
 }

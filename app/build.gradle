@@ -1,8 +1,10 @@
 import com.plugin.patch.Patch
 import org.apache.commons.compress.utils.IOUtils
+import org.objectweb.asm.AnnotationVisitor
 import org.objectweb.asm.ClassReader
 import org.objectweb.asm.ClassVisitor
 import org.objectweb.asm.ClassWriter
+import org.objectweb.asm.FieldVisitor
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.Type
@@ -84,6 +86,7 @@ dependencies {
 
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.0'
 
     //ARouter
     implementation 'com.alibaba:arouter-api:1.5.1'
@@ -213,12 +216,32 @@ dependencies {
 //            MyMethodVisitor myMethodVisitor = new MyMethodVisitor(Opcodes.ASM5, methodVisitor, access, name, descriptor, className);
 //            return myMethodVisitor
 //        }
+//
+//        @Override
+//        FieldVisitor visitField(int access, String name, String desc, String signature, Object value) {
+//            return super.visitField(access, name, desc, signature, value)
+//        }
+//
+//        @Override
+//        void visitAttribute(org.objectweb.asm.Attribute attr) {
+//            super.visitAttribute(attr)
+//        }
+//
+//        @Override
+//        void visitInnerClass(String name, String outerName, String innerName, int access) {
+//            super.visitInnerClass(name, outerName, innerName, access)
+//        }
+//
+//        @Override
+//        AnnotationVisitor visitAnnotation(String desc, boolean visible) {
+//            return super.visitAnnotation(desc, visible)
+//        }
 //    };
 //
 //    cr.accept(cv, ClassReader.EXPAND_FRAMES)
 //
 //    byte[] bytes = cw.toByteArray()
-//
+
 //    return bytes
 //}
 //

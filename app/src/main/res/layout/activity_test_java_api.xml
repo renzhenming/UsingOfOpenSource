@@ -13,6 +13,18 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="dynamicProxy"
+            android:text="dynamicProxy" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="reflect"
+            android:text="reflect" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="semaphore"
             android:text="semaphore" />
 

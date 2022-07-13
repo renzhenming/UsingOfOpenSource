@@ -16,6 +16,14 @@ public class TestJavaApiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_java_api);
     }
 
+    public void dynamicProxy(View view) {
+        startActivity(new Intent(getApplicationContext(), DynamicProxyActivity.class));
+    }
+
+    public void reflect(View view) {
+        startActivity(new Intent(getApplicationContext(), ReflectionActivity.class));
+    }
+
     public void semaphore(View view) {
         startActivity(new Intent(getApplicationContext(), SemaphoreActivity.class));
     }
