@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.rzm.testapplication.R;
+import com.rzm.testapplication.android_api.ams.ActivityManagerServiceActivity;
 import com.rzm.testapplication.android_api.databinding.DatabindingActivity;
 import com.rzm.testapplication.android_api.livedata.LiveDataActivity;
 import com.rzm.testapplication.android_api.viewmodel.ViewModelActivity;
@@ -19,6 +20,9 @@ public class TestAndroidApiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_android_api);
     }
 
+    public void ams(View view) {
+        startActivity(new Intent(getApplicationContext(), ActivityManagerServiceActivity.class));
+    }
     public void dataBinding(View view) {
         startActivity(new Intent(getApplicationContext(), DatabindingActivity.class));
     }

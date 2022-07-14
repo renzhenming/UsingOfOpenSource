@@ -12,6 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
+        <service
+            android:name=".android_api.ams.TestService"
+            android:enabled="true"
+            android:exported="true"></service>
+
+        <activity
+            android:name=".android_api.ams.ActivityManagerServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".java_api.DynamicProxyActivity"
             android:exported="false" />
