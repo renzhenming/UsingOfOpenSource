@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.rzm.testapplication.R;
 
-import leakcanary.LeakCanary;
+import leakcanary.AppWatcher;
 
 public class LeakCanaryActivity extends AppCompatActivity {
 
@@ -15,5 +15,11 @@ public class LeakCanaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leak_canary);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AppWatcher.INSTANCE.manualInstall(getApplication());
     }
 }

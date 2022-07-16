@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.rzm.testapplication.R;
 import com.rzm.testapplication.android_api.ams.ActivityManagerServiceActivity;
 import com.rzm.testapplication.android_api.databinding.DatabindingActivity;
 import com.rzm.testapplication.android_api.livedata.LiveDataActivity;
 import com.rzm.testapplication.android_api.viewmodel.ViewModelActivity;
+import com.rzm.testapplication.android_api.wms.WindowManagerServiceActivity;
 
 public class TestAndroidApiActivity extends AppCompatActivity {
 
@@ -20,9 +22,14 @@ public class TestAndroidApiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_android_api);
     }
 
+    public void wms(View view) {
+        startActivity(new Intent(getApplicationContext(), WindowManagerServiceActivity.class));
+    }
+
     public void ams(View view) {
         startActivity(new Intent(getApplicationContext(), ActivityManagerServiceActivity.class));
     }
+
     public void dataBinding(View view) {
         startActivity(new Intent(getApplicationContext(), DatabindingActivity.class));
     }

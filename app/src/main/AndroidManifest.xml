@@ -3,6 +3,7 @@
     package="com.rzm.testapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".Application"
@@ -13,9 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <service
-            android:name=".android_api.ams.TestService"
+            android:name=".android_api.wms.FloatingService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity
+            android:name=".android_api.wms.WindowManagerServiceActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".android_api.ams.TestService"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity
             android:name=".android_api.ams.ActivityManagerServiceActivity"

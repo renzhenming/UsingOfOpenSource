@@ -10,8 +10,15 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="wms"
+        android:text="wms" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="ams"
         android:text="ams" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
