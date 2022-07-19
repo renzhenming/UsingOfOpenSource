@@ -17,7 +17,7 @@ public class DatabindingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_databinding);
         ActivityDatabindingBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_databinding);
-        user = new User("Derry", "123");
+        user = new User("Derry", "123","https://img1.baidu.com/it/u=1966616150,2146512490&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1658077200&t=c29926c9f9904c3f332267bf3c770ebd");
         binding.setUser(user); // 必须要建立绑定关系，否则没有任何效果
 
         // Model（修改Model的数据）  ---> View（UI的控件就DataBinding自动刷新）  一向 更新

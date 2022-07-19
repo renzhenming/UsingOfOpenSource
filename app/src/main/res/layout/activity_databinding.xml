@@ -36,6 +36,12 @@
             android:layout_height="wrap_content"
             android:text="@={user.pwd}"
             android:textSize="50sp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:id="@+id/image"
+            imageUrl="@{user.headUrl}"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </layout>

@@ -10,10 +10,22 @@ public class User extends BaseObservable {
 
     private String name;
     private String pwd;
+    private String headUrl;
 
-    public User(String name, String pwd) {
+    public User(String name, String pwd, String headUrl) {
         this.name = name;
         this.pwd = pwd;
+        this.headUrl = headUrl;
+    }
+
+    @Bindable
+    public String getHeadUrl() {
+        return headUrl;
+    }
+
+    public void setHeadUrl(String headUrl) {
+        this.headUrl = headUrl;
+        notifyPropertyChanged(BR.headUrl); // APT又是注解处理器技术 BR文件
     }
 
     @Bindable // BR里面标记生成 name数值标记
@@ -23,7 +35,7 @@ public class User extends BaseObservable {
 
     public void setName(String name) {
         this.name = name;
-        notifyPropertyChanged(BR.name); // APT又是主接处理器技术 BR文件
+        notifyPropertyChanged(BR.name); // APT又是注解处理器技术 BR文件
     }
 
     @Bindable // BR里面标记生成 pwd数值标记
@@ -33,6 +45,6 @@ public class User extends BaseObservable {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
-        notifyPropertyChanged(BR.pwd); // APT又是主接处理器技术 BR文件
+        notifyPropertyChanged(BR.pwd); // APT又是注解处理器技术 BR文件
     }
 }
