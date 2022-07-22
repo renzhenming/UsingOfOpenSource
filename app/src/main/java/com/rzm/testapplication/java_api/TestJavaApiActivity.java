@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.rzm.testapplication.R;
+import com.rzm.testapplication.android_api.SparseArrayActivity;
 
 public class TestJavaApiActivity extends AppCompatActivity {
 
@@ -14,6 +15,10 @@ public class TestJavaApiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_java_api);
+    }
+
+    public void linkedHashMap(View view) {
+        startActivity(new Intent(getApplicationContext(), LinkedHashMapActivity.class));
     }
 
     public void dynamicProxy(View view) {

@@ -13,10 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
+        <activity
+            android:name=".java_api.LinkedHashMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".android_api.ArrayMapActivity"
+            android:exported="false" />
+
         <service
             android:name=".android_api.wms.FloatingService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity
             android:name=".android_api.wms.WindowManagerServiceActivity"
@@ -83,7 +90,7 @@
             android:name=".java_api.LinkedListActivity"
             android:exported="false" />
         <activity
-            android:name=".java_api.SparseArrayActivity"
+            android:name=".android_api.SparseArrayActivity"
             android:exported="false" />
         <activity
             android:name=".java_api.HashMapActivity"

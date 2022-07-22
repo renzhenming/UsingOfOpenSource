@@ -13,6 +13,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="linkedHashMap"
+            android:text="linkedHashMap" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="dynamicProxy"
             android:text="dynamicProxy" />
 

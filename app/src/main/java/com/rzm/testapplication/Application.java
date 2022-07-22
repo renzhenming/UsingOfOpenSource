@@ -1,8 +1,12 @@
 package com.rzm.testapplication;
 
+import android.content.ComponentCallbacks;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
@@ -24,6 +28,35 @@ public class Application extends android.app.Application {
             ARouter.openDebug();   // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
         }
         ARouter.init(this);
+
+        registerComponentCallbacks(new ComponentCallbacks() {
+            @Override
+            public void onConfigurationChanged(@NonNull Configuration newConfig) {
+
+            }
+
+            @Override
+            public void onLowMemory() {
+
+            }
+        });
+
+        registerComponentCallbacks(new ComponentCallbacks2() {
+            @Override
+            public void onConfigurationChanged(@NonNull Configuration newConfig) {
+
+            }
+
+            @Override
+            public void onLowMemory() {
+
+            }
+
+            @Override
+            public void onTrimMemory(int level) {
+
+            }
+        });
 
     }
 
