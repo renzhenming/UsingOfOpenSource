@@ -111,6 +111,14 @@ dependencies {
     implementation 'io.github.idisfkj:android-startup:1.1.0'
 
     implementation 'androidx.startup:startup-runtime:1.1.1'
+
+
+    //blockcanary
+    implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+//    // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
+//    debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'
+//    releaseImplementation 'com.github.markzhai:blockcanary-no-op:1.5.0'
 }
 //gradle执行会解析build.gradle文件，afterEvaluate表示在解析完成之后再执行我们的代码
 //afterEvaluate {

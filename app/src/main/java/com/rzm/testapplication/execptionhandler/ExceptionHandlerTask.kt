@@ -20,7 +20,7 @@ class ExceptionHandlerTask : AndroidStartup<Void>() {
         val t = if (Looper.myLooper() == Looper.getMainLooper()) "主线程: " else "子线程: "
         LogUtils.log("$t ExceptionHandlerTask：start")
         UncaughtCrashHandler.getInstance().init(context)
-        SystemClock.sleep(200)
+        SystemClock.sleep(5000)
         LogUtils.log("$t ExceptionHandlerTask：end")
         return null
     }

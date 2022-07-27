@@ -7,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.rzm.testapplication.android_api.TestAndroidApiActivity;
 import com.rzm.testapplication.arouter.ARouterActivity;
+import com.rzm.testapplication.blockcanary.BlockCanaryActivity;
 import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
@@ -31,12 +33,22 @@ public class MainActivity extends AppCompatActivity {
         LogUtils.log("MainActivity onCreate");
     }
 
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        Debug.stopMethodTracing();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
     }
 
+
+    public void blockCanary(View view) {
+        startActivity(new Intent(getApplicationContext(), BlockCanaryActivity.class));
+    }
 
     public void startup(View view) {
         startActivity(new Intent(getApplicationContext(), StartupActivity.class));

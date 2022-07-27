@@ -2,8 +2,10 @@ package com.rzm.testapplication;
 
 import android.content.ComponentCallbacks;
 import android.content.ComponentCallbacks2;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.os.Debug;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -13,7 +15,10 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 import androidx.startup.AppInitializer;
 
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
 import com.rzm.testapplication.arouter.ARouterTask;
+import com.rzm.testapplication.blockcanary.AppBlockCanaryContext;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
 import com.rzm.testapplication.startup.android_startup.AndroidStartupTask1;
 import com.rzm.testapplication.startup.android_startup.AndroidStartupTask2;
@@ -29,27 +34,33 @@ import com.rzm.testapplication.startup.my_startup.tasks.Task3;
 import com.rzm.testapplication.startup.my_startup.tasks.Task4;
 import com.rzm.testapplication.startup.my_startup.tasks.Task5;
 
+import java.io.File;
+
 public class Application extends android.app.Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+        Debug.startMethodTracingSampling(new File(getFilesDir(), "trace2").getAbsolutePath(), 8 * 1024 * 1024, 1000);
+
+        BlockCanary.install(this, new AppBlockCanaryContext()).start();
+
         //my-startup
-//        new StartupManager.Builder()
-//                .addStartup(new ExceptionHandlerTask())
-//                .addStartup(new ARouterTask())
-//                .addStartup(new Task5())
-//                .addStartup(new Task4())
-//                .addStartup(new Task3())
-//                .addStartup(new Task2())
-//                .addStartup(new Task1())
-//                .build(this)
-//                .start().await();
+        new StartupManager.Builder()
+                .addStartup(new ExceptionHandlerTask())
+                .addStartup(new ARouterTask())
+                .addStartup(new Task5())
+                .addStartup(new Task4())
+                .addStartup(new Task3())
+                .addStartup(new Task2())
+                .addStartup(new Task1())
+                .build(this)
+                .start().await();
         LogUtils.log("StartupManager tasks all finished");
 
         //android-startup
-        //https://juejin.cn/post/6859500445669752846
+//        https://juejin.cn/post/6859500445669752846
 //        new com.rousetime.android_startup.StartupManager.Builder()
 //                .addStartup(new AndroidStartupTask1())
 //                .addStartup(new AndroidStartupTask2())
@@ -61,8 +72,8 @@ public class Application extends android.app.Application {
 //                .await();
 
         //app startup
-        AppInitializer.getInstance(this)
-                .initializeComponent(AppStartupTask5.class);
+//        AppInitializer.getInstance(this)
+//                .initializeComponent(AppStartupTask5.class);
 
         LogUtils.log("AndroidStartupManager tasks all finished");
 
