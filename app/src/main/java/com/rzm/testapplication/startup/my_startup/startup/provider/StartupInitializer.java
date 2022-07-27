@@ -1,4 +1,4 @@
-package com.rzm.testapplication.startup.startup.provider;
+package com.rzm.testapplication.startup.my_startup.startup.provider;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ProviderInfo;
 import android.text.TextUtils;
 
-import com.rzm.testapplication.startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
-package com.rzm.testapplication.startup.startup.manage;
+package com.rzm.testapplication.startup.my_startup.startup.manage;
 
-import com.rzm.testapplication.startup.startup.Result;
-import com.rzm.testapplication.startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.Result;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
 
 import java.util.concurrent.ConcurrentHashMap;
 

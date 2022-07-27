@@ -1,4 +1,4 @@
-package com.rzm.testapplication.startup.startup;
+package com.rzm.testapplication.startup.my_startup.startup;
 
 public class Result<T> {
 

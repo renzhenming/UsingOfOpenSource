@@ -1,8 +1,8 @@
-package com.rzm.testapplication.startup.startup.sort;
+package com.rzm.testapplication.startup.my_startup.startup.sort;
 
 
-import com.rzm.testapplication.startup.startup.Startup;
-import com.rzm.testapplication.startup.startup.StartupSortStore;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.StartupSortStore;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

@@ -7,8 +7,8 @@ import android.os.SystemClock
 import com.alibaba.android.arouter.launcher.ARouter
 import com.rzm.testapplication.BuildConfig
 import com.rzm.testapplication.LogUtils
-import com.rzm.testapplication.startup.startup.AndroidStartup
-import com.rzm.testapplication.startup.startup.manage.ExecutorManager
+import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup
+import com.rzm.testapplication.startup.my_startup.startup.manage.ExecutorManager
 import java.util.concurrent.Executor
 
 class ARouterTask : AndroidStartup<Void>() {

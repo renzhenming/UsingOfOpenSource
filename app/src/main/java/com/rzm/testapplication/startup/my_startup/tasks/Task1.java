@@ -1,13 +1,13 @@
-package com.rzm.testapplication.startup.tasks;
+package com.rzm.testapplication.startup.my_startup.tasks;
 
 import android.content.Context;
 import android.os.Looper;
 import android.os.SystemClock;
 import androidx.annotation.Nullable;
 
-import com.rzm.testapplication.startup.startup.AndroidStartup;
+import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup;
 import com.rzm.testapplication.LogUtils;
-import com.rzm.testapplication.startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
 
 import java.util.List;
 

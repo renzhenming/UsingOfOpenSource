@@ -1,4 +1,4 @@
-package com.rzm.testapplication.startup.startup.manage;
+package com.rzm.testapplication.startup.my_startup.startup.manage;
 
 import android.os.Handler;
 import android.os.Looper;

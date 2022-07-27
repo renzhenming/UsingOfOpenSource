@@ -1,4 +1,4 @@
-package com.rzm.testapplication.startup.tasks;
+package com.rzm.testapplication.startup.android_startup;
 
 import android.content.Context;
 import android.os.Looper;
@@ -6,19 +6,19 @@ import android.os.SystemClock;
 
 import androidx.annotation.Nullable;
 
-import com.rzm.testapplication.startup.startup.AndroidStartup;
 import com.rzm.testapplication.LogUtils;
-import com.rzm.testapplication.startup.startup.Startup;
+import com.rousetime.android_startup.AndroidStartup;
+import com.rousetime.android_startup.Startup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task2 extends AndroidStartup<Void> {
+public class AndroidStartupTask2 extends AndroidStartup<Void> {
     static List<Class<? extends Startup<?>>> depends;
 
     static {
         depends = new ArrayList<>();
-        depends.add(Task1.class);
+        depends.add(AndroidStartupTask1.class);
     }
 
     @Nullable
@@ -26,9 +26,9 @@ public class Task2 extends AndroidStartup<Void> {
     public Void create(Context context) {
         String t = Looper.myLooper() == Looper.getMainLooper()
                 ? "主线程: " : "子线程: ";
-        LogUtils.log(t + " Task2：学习Socket");
+        LogUtils.log(t + " AndroidStartupTask2：start");
         SystemClock.sleep(200);
-        LogUtils.log(t + " Task2：掌握Socket");
+        LogUtils.log(t + " AndroidStartupTask2：end");
         return null;
     }
 

@@ -11,17 +11,23 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
+import androidx.startup.AppInitializer;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-import com.rzm.exceptionhandler.UncaughtCrashHandler;
 import com.rzm.testapplication.arouter.ARouterTask;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
-import com.rzm.testapplication.startup.startup.manage.StartupManager;
-import com.rzm.testapplication.startup.tasks.Task1;
-import com.rzm.testapplication.startup.tasks.Task2;
-import com.rzm.testapplication.startup.tasks.Task3;
-import com.rzm.testapplication.startup.tasks.Task4;
-import com.rzm.testapplication.startup.tasks.Task5;
+import com.rzm.testapplication.startup.android_startup.AndroidStartupTask1;
+import com.rzm.testapplication.startup.android_startup.AndroidStartupTask2;
+import com.rzm.testapplication.startup.android_startup.AndroidStartupTask3;
+import com.rzm.testapplication.startup.android_startup.AndroidStartupTask4;
+import com.rzm.testapplication.startup.android_startup.AndroidStartupTask5;
+import com.rzm.testapplication.startup.app_startup.AppStartupTask1;
+import com.rzm.testapplication.startup.app_startup.AppStartupTask5;
+import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
+import com.rzm.testapplication.startup.my_startup.tasks.Task1;
+import com.rzm.testapplication.startup.my_startup.tasks.Task2;
+import com.rzm.testapplication.startup.my_startup.tasks.Task3;
+import com.rzm.testapplication.startup.my_startup.tasks.Task4;
+import com.rzm.testapplication.startup.my_startup.tasks.Task5;
 
 public class Application extends android.app.Application {
 
@@ -29,16 +35,36 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
 
-        new StartupManager.Builder()
-                .addStartup(new ExceptionHandlerTask())
-                .addStartup(new ARouterTask())
-                .addStartup(new Task5())
-                .addStartup(new Task4())
-                .addStartup(new Task3())
-                .addStartup(new Task2())
-                .addStartup(new Task1())
-                .build(this)
-                .start().await();
+        //my-startup
+//        new StartupManager.Builder()
+//                .addStartup(new ExceptionHandlerTask())
+//                .addStartup(new ARouterTask())
+//                .addStartup(new Task5())
+//                .addStartup(new Task4())
+//                .addStartup(new Task3())
+//                .addStartup(new Task2())
+//                .addStartup(new Task1())
+//                .build(this)
+//                .start().await();
+        LogUtils.log("StartupManager tasks all finished");
+
+        //android-startup
+        //https://juejin.cn/post/6859500445669752846
+//        new com.rousetime.android_startup.StartupManager.Builder()
+//                .addStartup(new AndroidStartupTask1())
+//                .addStartup(new AndroidStartupTask2())
+//                .addStartup(new AndroidStartupTask3())
+//                .addStartup(new AndroidStartupTask4())
+//                .addStartup(new AndroidStartupTask5())
+//                .build(this)
+//                .start()
+//                .await();
+
+        //app startup
+        AppInitializer.getInstance(this)
+                .initializeComponent(AppStartupTask5.class);
+
+        LogUtils.log("AndroidStartupManager tasks all finished");
 
         ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationObserver());
 

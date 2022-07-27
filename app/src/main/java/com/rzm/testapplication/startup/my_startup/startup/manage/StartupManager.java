@@ -1,12 +1,12 @@
-package com.rzm.testapplication.startup.startup.manage;
+package com.rzm.testapplication.startup.my_startup.startup.manage;
 
 import android.content.Context;
 import android.os.Looper;
 
-import com.rzm.testapplication.startup.startup.Startup;
-import com.rzm.testapplication.startup.startup.StartupSortStore;
-import com.rzm.testapplication.startup.startup.run.StartupRunnable;
-import com.rzm.testapplication.startup.startup.sort.TopologySort;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.StartupSortStore;
+import com.rzm.testapplication.startup.my_startup.startup.run.StartupRunnable;
+import com.rzm.testapplication.startup.my_startup.startup.sort.TopologySort;
 
 import java.util.ArrayList;
 import java.util.List;

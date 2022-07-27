@@ -5,7 +5,7 @@ import android.os.Looper
 import android.os.SystemClock
 import com.rzm.exceptionhandler.UncaughtCrashHandler
 import com.rzm.testapplication.LogUtils
-import com.rzm.testapplication.startup.startup.AndroidStartup
+import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup
 
 class ExceptionHandlerTask : AndroidStartup<Void>() {
     override fun callCreateOnMainThread(): Boolean {

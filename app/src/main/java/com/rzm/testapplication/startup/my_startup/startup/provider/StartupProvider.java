@@ -1,4 +1,4 @@
-package com.rzm.testapplication.startup.startup.provider;
+package com.rzm.testapplication.startup.my_startup.startup.provider;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -8,8 +8,8 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.rzm.testapplication.startup.startup.Startup;
-import com.rzm.testapplication.startup.startup.manage.StartupManager;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
 
 import java.util.List;
 

@@ -107,7 +107,10 @@ dependencies {
     //ProcessLifecycleOwner需要用到
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
+    //android-startup
+    implementation 'io.github.idisfkj:android-startup:1.1.0'
 
+    implementation 'androidx.startup:startup-runtime:1.1.1'
 }
 //gradle执行会解析build.gradle文件，afterEvaluate表示在解析完成之后再执行我们的代码
 //afterEvaluate {

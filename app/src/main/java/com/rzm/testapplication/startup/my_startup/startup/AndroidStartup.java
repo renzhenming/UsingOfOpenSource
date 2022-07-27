@@ -1,9 +1,9 @@
-package com.rzm.testapplication.startup.startup;
+package com.rzm.testapplication.startup.my_startup.startup;
 
 
 import android.os.Process;
 
-import com.rzm.testapplication.startup.startup.manage.ExecutorManager;
+import com.rzm.testapplication.startup.my_startup.startup.manage.ExecutorManager;
 
 import java.util.List;
 import java.util.concurrent.CountDownLatch;

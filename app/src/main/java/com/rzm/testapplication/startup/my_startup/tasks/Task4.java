@@ -1,47 +1,40 @@
-
-package com.rzm.testapplication.startup.tasks;
+package com.rzm.testapplication.startup.my_startup.tasks;
 
 import android.content.Context;
 import android.os.Looper;
 import android.os.SystemClock;
 
-import androidx.annotation.Nullable;
-
-import com.rzm.testapplication.startup.startup.AndroidStartup;
+import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup;
 import com.rzm.testapplication.LogUtils;
-import com.rzm.testapplication.startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task3 extends AndroidStartup<Void> {
+public class Task4 extends AndroidStartup<Void> {
 
     static List<Class<? extends Startup<?>>> depends;
 
     static {
         depends = new ArrayList<>();
-        depends.add(Task1.class);
+        depends.add(Task2.class);
     }
 
-    @Nullable
     @Override
     public Void create(Context context) {
         String t = Looper.myLooper() == Looper.getMainLooper()
                 ? "主线程: " : "子线程: ";
-        LogUtils.log(t+" Task3：学习设计模式");
-        SystemClock.sleep(2_00);
-        LogUtils.log(t+" Task3：掌握设计模式");
+        LogUtils.log(t + " Task4：学习Http");
+        SystemClock.sleep(1_00);
+        LogUtils.log(t + " Task4：掌握Http");
         return null;
     }
 
 
-    //    执行此任务需要依赖哪些任务
-    @Nullable
     @Override
     public List<Class<? extends Startup<?>>> dependencies() {
         return depends;
     }
-
 
     @Override
     public boolean callCreateOnMainThread() {

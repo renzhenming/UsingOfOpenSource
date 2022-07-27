@@ -1,12 +1,12 @@
-package com.rzm.testapplication.startup.startup.run;
+package com.rzm.testapplication.startup.my_startup.startup.run;
 
 import android.content.Context;
 import android.os.Process;
 
-import com.rzm.testapplication.startup.startup.Result;
-import com.rzm.testapplication.startup.startup.Startup;
-import com.rzm.testapplication.startup.startup.manage.StartupCacheManager;
-import com.rzm.testapplication.startup.startup.manage.StartupManager;
+import com.rzm.testapplication.startup.my_startup.startup.Result;
+import com.rzm.testapplication.startup.my_startup.startup.Startup;
+import com.rzm.testapplication.startup.my_startup.startup.manage.StartupCacheManager;
+import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
 
 public class StartupRunnable implements Runnable {
     private StartupManager startupManager;
