@@ -1,5 +1,6 @@
 package com.rzm.testapplication.android_api.databinding;
 
+import android.graphics.BitmapRegionDecoder;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;

@@ -18,6 +18,7 @@ import com.rzm.testapplication.java_api.TestJavaApiActivity;
 import com.rzm.testapplication.leakcanary.LeakCanaryActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
+import com.rzm.testapplication.startup.StartupActivity;
 
 import java.util.HashMap;
 
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new HashMap<>();
+        LogUtils.log("MainActivity onCreate");
     }
 
     @Nullable
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
     public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
     }
+
+
+    public void startup(View view) {
+        startActivity(new Intent(getApplicationContext(), StartupActivity.class));
+    }
+
 
     public void testLeakCanary(View view) {
         startActivity(new Intent(getApplicationContext(), LeakCanaryActivity.class));

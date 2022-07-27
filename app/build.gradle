@@ -22,6 +22,7 @@ plugins {
 plugins {
     //id指的就是resources.META-INF.gradle.plugins中的文件名"com.plugin.patch"
     id 'com.plugin.patch'
+    id 'org.jetbrains.kotlin.android'
 }
 
 patch {

@@ -20,6 +20,10 @@ public class TestAndroidApiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_android_api);
     }
 
+    public void dialog(View view) {
+        startActivity(new Intent(getApplicationContext(), DialogActivity.class));
+    }
+
     public void arrayMap(View view) {
         startActivity(new Intent(getApplicationContext(), ArrayMapActivity.class));
     }

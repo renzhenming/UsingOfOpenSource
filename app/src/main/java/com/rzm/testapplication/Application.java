@@ -14,20 +14,33 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.rzm.exceptionhandler.UncaughtCrashHandler;
+import com.rzm.testapplication.arouter.ARouterTask;
+import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
+import com.rzm.testapplication.startup.startup.manage.StartupManager;
+import com.rzm.testapplication.startup.tasks.Task1;
+import com.rzm.testapplication.startup.tasks.Task2;
+import com.rzm.testapplication.startup.tasks.Task3;
+import com.rzm.testapplication.startup.tasks.Task4;
+import com.rzm.testapplication.startup.tasks.Task5;
 
 public class Application extends android.app.Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationObserver());
-        UncaughtCrashHandler.getInstance().init(this);
 
-        if (BuildConfig.DEBUG) {           // These two lines must be written before init, otherwise these configurations will be invalid in the init process
-            ARouter.openLog();     // Print log
-            ARouter.openDebug();   // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
-        }
-        ARouter.init(this);
+        new StartupManager.Builder()
+                .addStartup(new ExceptionHandlerTask())
+                .addStartup(new ARouterTask())
+                .addStartup(new Task5())
+                .addStartup(new Task4())
+                .addStartup(new Task3())
+                .addStartup(new Task2())
+                .addStartup(new Task1())
+                .build(this)
+                .start().await();
+
+        ProcessLifecycleOwner.get().getLifecycle().addObserver(new ApplicationObserver());
 
         registerComponentCallbacks(new ComponentCallbacks() {
             @Override

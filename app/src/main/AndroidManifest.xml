@@ -14,6 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".startup.StartupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".android_api.DialogActivity"
+            android:exported="false" />
+        <activity
             android:name=".java_api.LinkedHashMapActivity"
             android:exported="false" />
         <activity
@@ -123,6 +129,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<!--        <provider-->
+<!--            android:name=".startup.startup.provider.StartupProvider"-->
+<!--            android:authorities="${applicationId}.android_startup"-->
+<!--            android:exported="false">-->
+
+<!--            <meta-data-->
+<!--                android:name="com.rzm.testapplication.startup.tasks.Task5"-->
+<!--                android:value="android.startup" />-->
+<!--        </provider>-->
     </application>
 
 </manifest>
