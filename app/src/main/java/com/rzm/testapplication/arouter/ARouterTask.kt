@@ -34,7 +34,7 @@ class ARouterTask : AndroidStartup<Void>() {
         if (context is Application) {
             ARouter.init(context)
         }
-        SystemClock.sleep(200)
+        SystemClock.sleep(0)
         LogUtils.log("$t ARouterTask：end")
         return null
     }

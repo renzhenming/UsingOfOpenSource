@@ -27,7 +27,7 @@ public class Task2 extends AndroidStartup<Void> {
         String t = Looper.myLooper() == Looper.getMainLooper()
                 ? "主线程: " : "子线程: ";
         LogUtils.log(t + " Task2：学习Socket");
-        SystemClock.sleep(200);
+        SystemClock.sleep(50);
         LogUtils.log(t + " Task2：掌握Socket");
         return null;
     }

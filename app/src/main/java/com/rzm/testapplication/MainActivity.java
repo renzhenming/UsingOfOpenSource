@@ -12,17 +12,17 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import com.rzm.testapplication.android_api.TestAndroidApiActivity;
+import com.rzm.testapplication.anr.AnrActivity;
 import com.rzm.testapplication.arouter.ARouterActivity;
-import com.rzm.testapplication.blockcanary.BlockCanaryActivity;
+import com.rzm.testapplication.anr.blockcanary.BlockCanaryActivity;
 import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
+import com.rzm.testapplication.koom.KoomActivity;
 import com.rzm.testapplication.leakcanary.LeakCanaryActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
 import com.rzm.testapplication.startup.StartupActivity;
-
-import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,9 +45,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateView(name, context, attrs);
     }
 
+    public void anr(View view) {
+        startActivity(new Intent(getApplicationContext(), AnrActivity.class));
+    }
 
-    public void blockCanary(View view) {
-        startActivity(new Intent(getApplicationContext(), BlockCanaryActivity.class));
+    public void koom(View view) {
+        startActivity(new Intent(getApplicationContext(), KoomActivity.class));
     }
 
     public void startup(View view) {

@@ -2,31 +2,20 @@ package com.rzm.testapplication;
 
 import android.content.ComponentCallbacks;
 import android.content.ComponentCallbacks2;
-import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Debug;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
-import androidx.startup.AppInitializer;
 
-import com.github.moduth.blockcanary.BlockCanary;
-import com.github.moduth.blockcanary.BlockCanaryContext;
+import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogTask;
+import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
 import com.rzm.testapplication.arouter.ARouterTask;
-import com.rzm.testapplication.blockcanary.AppBlockCanaryContext;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
-import com.rzm.testapplication.startup.android_startup.AndroidStartupTask1;
-import com.rzm.testapplication.startup.android_startup.AndroidStartupTask2;
-import com.rzm.testapplication.startup.android_startup.AndroidStartupTask3;
-import com.rzm.testapplication.startup.android_startup.AndroidStartupTask4;
-import com.rzm.testapplication.startup.android_startup.AndroidStartupTask5;
-import com.rzm.testapplication.startup.app_startup.AppStartupTask1;
-import com.rzm.testapplication.startup.app_startup.AppStartupTask5;
 import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
 import com.rzm.testapplication.startup.my_startup.tasks.Task1;
 import com.rzm.testapplication.startup.my_startup.tasks.Task2;
@@ -44,12 +33,12 @@ public class Application extends android.app.Application {
 
         Debug.startMethodTracingSampling(new File(getFilesDir(), "trace2").getAbsolutePath(), 8 * 1024 * 1024, 1000);
 
-        BlockCanary.install(this, new AppBlockCanaryContext()).start();
-
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new BlockCanaryTask())
                 .addStartup(new ExceptionHandlerTask())
                 .addStartup(new ARouterTask())
+                .addStartup(new AnrWatchDogTask())
                 .addStartup(new Task5())
                 .addStartup(new Task4())
                 .addStartup(new Task3())

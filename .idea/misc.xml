@@ -8,6 +8,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="../../Library/Android/sdk/platforms/android-30/data/res/layout/app_anr_dialog.xml" value="0.2877348508515981" />
+        <entry key="app/src/main/res/layout/activity_anr.xml" value="0.13601823708206687" />
+        <entry key="app/src/main/res/layout/activity_anr_monitor.xml" value="0.14719202898550723" />
         <entry key="app/src/main/res/layout/activity_arouter.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_array_list.xml" value="0.10131712259371833" />
         <entry key="app/src/main/res/layout/activity_block_canary.xml" value="0.12318840579710146" />

@@ -1,11 +1,3 @@
-com/plugin/patch/PatchExtension.java
- com.plugin.patch.PatchExtension
-com/plugin/patch/AsmUtils.java
- com.plugin.patch.AsmUtils
- com.plugin.patch.AsmUtils$1
- com.plugin.patch.AsmUtils$1$1
- com.plugin.patch.AsmUtils$2
- com.plugin.patch.AsmUtils$2$1
 com/plugin/patch/Patch.java
  com.plugin.patch.Patch
  com.plugin.patch.Patch$1
@@ -16,3 +8,11 @@ com/plugin/patch/Utils.java
 com/plugin/patch/PatchGenerator.java
  com.plugin.patch.PatchGenerator
  com.plugin.patch.PatchGenerator$1
+com/plugin/patch/AsmUtils.java
+ com.plugin.patch.AsmUtils
+ com.plugin.patch.AsmUtils$1
+ com.plugin.patch.AsmUtils$1$1
+ com.plugin.patch.AsmUtils$2
+ com.plugin.patch.AsmUtils$2$1
+com/plugin/patch/PatchExtension.java
+ com.plugin.patch.PatchExtension

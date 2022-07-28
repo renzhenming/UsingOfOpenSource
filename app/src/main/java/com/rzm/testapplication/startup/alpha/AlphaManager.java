@@ -33,6 +33,9 @@ import java.util.List;
  * 自己用代码构建一个具体的{@code Project}；另外一种方式是在XML配置文件中配置，这里直接传入配置文件即可。</p>
  *
  * Created by zhangshuliang.zsl on 15/8/18.
+ *
+ *
+ * https://github.com/alibaba/alpha
  */
 public class AlphaManager {
     /**

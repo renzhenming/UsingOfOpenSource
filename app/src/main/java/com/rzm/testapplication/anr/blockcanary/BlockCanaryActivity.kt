@@ -1,4 +1,4 @@
-package com.rzm.testapplication.blockcanary
+package com.rzm.testapplication.anr.blockcanary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

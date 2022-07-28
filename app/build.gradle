@@ -50,6 +50,12 @@ android {
         }
 
         dataBinding.enabled = true
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
     }
 
     buildTypes {
@@ -61,6 +67,12 @@ android {
         debug {
 //            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.10.2"
         }
     }
     compileOptions {
@@ -112,9 +124,15 @@ dependencies {
 
     implementation 'androidx.startup:startup-runtime:1.1.1'
 
+    //alibaba 启动框架alpha
+//    implementation 'com.alibaba.android:alpha:1.0.0.1@aar'
+
 
     //blockcanary
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
+
+    //anrwatchdog
+    implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
 
 //    // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
 //    debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'

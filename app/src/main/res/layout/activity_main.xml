@@ -19,8 +19,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="blockCanary"
-            android:text="blockCanary" />
+            android:onClick="anr"
+            android:text="anr" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="koom"
+            android:text="koom" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +50,7 @@
             android:layout_height="wrap_content"
             android:onClick="startup"
             android:text="startup" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

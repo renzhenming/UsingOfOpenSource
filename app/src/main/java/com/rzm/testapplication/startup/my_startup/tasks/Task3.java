@@ -29,7 +29,7 @@ public class Task3 extends AndroidStartup<Void> {
         String t = Looper.myLooper() == Looper.getMainLooper()
                 ? "主线程: " : "子线程: ";
         LogUtils.log(t+" Task3：学习设计模式");
-        SystemClock.sleep(2_00);
+        SystemClock.sleep(50);
         LogUtils.log(t+" Task3：掌握设计模式");
         return null;
     }

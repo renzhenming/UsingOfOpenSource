@@ -1,9 +1,8 @@
-package com.rzm.testapplication.blockcanary;
+package com.rzm.testapplication.anr.blockcanary;
 
 import android.content.Context;
 
 import com.github.moduth.blockcanary.BlockCanaryContext;
-import com.github.moduth.blockcanary.BlockCanaryInternals;
 import com.github.moduth.blockcanary.internal.BlockInfo;
 import com.rzm.testapplication.LogUtils;
 

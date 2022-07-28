@@ -15,7 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
-            android:name=".blockcanary.BlockCanaryActivity"
+            android:name=".anr.anrmonitor.AnrMonitorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".anr.anrwatchdog.AnrWatchDogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".anr.AnrActivity"
+            android:exported="false" />
+        <activity
+            android:name=".koom.KoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".anr.blockcanary.BlockCanaryActivity"
             android:exported="false" />
         <activity
             android:name=".startup.StartupActivity"
