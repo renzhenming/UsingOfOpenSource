@@ -1,4 +1,4 @@
-package com.rzm.testapplication.leakcanary;
+package com.rzm.testapplication.oom.leakcanary;
 
 import androidx.appcompat.app.AppCompatActivity;
 

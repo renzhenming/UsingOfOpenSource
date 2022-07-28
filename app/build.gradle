@@ -79,6 +79,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    /**
+     * 当项目中依赖的第三方库越来越多时，有可能会出现两个依赖库中存在同一个（名称）文件。如果这样，Gradle在打包时就会提示错误（警告）。
+     * 那么就可以根据提示，然后使用以下方法将重复的文件剔除，比较常用的是通过exclude去除重复的文件，例如：
+     */
+    packagingOptions {
+        exclude 'META-INF/*******'
+        exclude 'META-INF/INDEX.LIST'
+        exclude 'META-INF/io.netty.versions.properties'
+    }
 }
 
 dependencies {
@@ -133,6 +143,10 @@ dependencies {
 
     //anrwatchdog
     implementation 'com.github.anrwatchdog:anrwatchdog:1.4.0'
+
+    //koom
+    implementation "com.kuaishou.koom:koom-java-leak:2.2.0"
+    implementation "com.kuaishou.koom:koom-monitor-base:2.2.0"
 
 //    // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
 //    debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'

@@ -14,12 +14,12 @@ import android.view.View;
 import com.rzm.testapplication.android_api.TestAndroidApiActivity;
 import com.rzm.testapplication.anr.AnrActivity;
 import com.rzm.testapplication.arouter.ARouterActivity;
-import com.rzm.testapplication.anr.blockcanary.BlockCanaryActivity;
 import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
-import com.rzm.testapplication.koom.KoomActivity;
-import com.rzm.testapplication.leakcanary.LeakCanaryActivity;
+import com.rzm.testapplication.oom.OOMActivity;
+import com.rzm.testapplication.oom.koom.KoomActivity;
+import com.rzm.testapplication.oom.leakcanary.LeakCanaryActivity;
 import com.rzm.testapplication.okhttp.OkHttpActivity;
 import com.rzm.testapplication.retrofit.RetrofitActivity;
 import com.rzm.testapplication.startup.StartupActivity;
@@ -49,19 +49,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), AnrActivity.class));
     }
 
-    public void koom(View view) {
-        startActivity(new Intent(getApplicationContext(), KoomActivity.class));
-    }
-
     public void startup(View view) {
         startActivity(new Intent(getApplicationContext(), StartupActivity.class));
     }
 
-
-    public void testLeakCanary(View view) {
-        startActivity(new Intent(getApplicationContext(), LeakCanaryActivity.class));
+    public void oom(View view) {
+        startActivity(new Intent(getApplicationContext(), OOMActivity.class));
     }
-
 
     public void testOkhttp(View view) {
         startActivity(new Intent(getApplicationContext(), OkHttpActivity.class));

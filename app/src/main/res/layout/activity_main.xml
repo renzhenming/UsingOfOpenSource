@@ -21,17 +21,12 @@
             android:layout_height="wrap_content"
             android:onClick="anr"
             android:text="anr" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="koom"
-            android:text="koom" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="testLeakCanary"
-            android:text="LeakCanary" />
+            android:onClick="oom"
+            android:text="oom" />
 
         <Button
             android:layout_width="match_parent"

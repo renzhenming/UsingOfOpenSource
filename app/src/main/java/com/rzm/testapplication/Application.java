@@ -16,6 +16,7 @@ import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogTask;
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
 import com.rzm.testapplication.arouter.ARouterTask;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
+import com.rzm.testapplication.oom.koom.KoomTask;
 import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
 import com.rzm.testapplication.startup.my_startup.tasks.Task1;
 import com.rzm.testapplication.startup.my_startup.tasks.Task2;
@@ -35,6 +36,7 @@ public class Application extends android.app.Application {
 
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new KoomTask())
                 .addStartup(new BlockCanaryTask())
                 .addStartup(new ExceptionHandlerTask())
                 .addStartup(new ARouterTask())
