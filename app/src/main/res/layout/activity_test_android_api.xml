@@ -10,8 +10,15 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="windowInsets"
+        android:text="windowInsets" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="dialog"
         android:text="dialog" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
