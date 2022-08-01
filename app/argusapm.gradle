@@ -1,0 +1,16 @@
+apply plugin: 'argusapm'
+
+/**
+ * ArgusAPM的部分监控代码，是通过Gradle的Transform API，在编译期织入的，由于我们在开发中可能会引入各种lib库，而这些库可能会因各种各样的原因，不允许我们织入，具体表现就是，编译期报如下错：
+ can't determine superclass of missing type**
+ when weaving type**
+ when weaving classes
+ when weaving
+ when batch building BuildConfig[null] #Files=0 AopXmls=#0[Xlint:cantFindType]
+ 如果您在编译期遇到如上问题，则需要找到对应报错的库，把这个库过滤掉，具体过滤方式：
+ */
+argusApmAjxConfig
+        {
+//            exclude 'com.qihoo360.xxx' // 跳过 com.qihoo360.xxx包下的所有文件
+//            excludeJar 'libammsdk'    // 跳过 libammsdk.jar
+        }

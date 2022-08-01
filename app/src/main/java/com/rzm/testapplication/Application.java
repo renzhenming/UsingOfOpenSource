@@ -14,6 +14,7 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogTask;
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
+import com.rzm.testapplication.argusapm.ApmTask;
 import com.rzm.testapplication.arouter.ARouterTask;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
 import com.rzm.testapplication.oom.koom.KoomTask;
@@ -36,6 +37,7 @@ public class Application extends android.app.Application {
 
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new ApmTask())
                 .addStartup(new KoomTask())
                 .addStartup(new BlockCanaryTask())
                 .addStartup(new ExceptionHandlerTask())

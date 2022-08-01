@@ -29,10 +29,15 @@ patch {
     debugOn true
     applicationName "com.rzm.testapplication"
 }
+apply from: 'argusapm.gradle'
+//apply plugin: 'argusapm'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+
+    //在android的配置代码块里面(为了兼容Android6.0系统):
+    useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
         applicationId "com.rzm.testapplication"
