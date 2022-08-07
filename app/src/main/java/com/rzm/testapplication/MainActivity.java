@@ -35,6 +35,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        LogUtils.log("MainActivity onStart");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        LogUtils.log("MainActivity onRestart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        LogUtils.log("MainActivity onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        LogUtils.log("MainActivity onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LogUtils.log("MainActivity onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        LogUtils.log("MainActivity onDestroy");
+    }
+
+    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         Debug.stopMethodTracing();

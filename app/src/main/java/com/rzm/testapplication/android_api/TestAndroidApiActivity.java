@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowInsets;
 
 import com.rzm.testapplication.R;
 import com.rzm.testapplication.android_api.ams.ActivityManagerServiceActivity;
 import com.rzm.testapplication.android_api.databinding.DatabindingActivity;
 import com.rzm.testapplication.android_api.livedata.LiveDataActivity;
+import com.rzm.testapplication.android_api.view.view_click.ViewClickActivity;
+import com.rzm.testapplication.android_api.view.view_exposure.ViewExposureActivity;
 import com.rzm.testapplication.android_api.viewmodel.ViewModelActivity;
 import com.rzm.testapplication.android_api.windowInsets.WindowInsetsActivity;
 import com.rzm.testapplication.android_api.wms.WindowManagerServiceActivity;
@@ -21,6 +22,13 @@ public class TestAndroidApiActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_android_api);
+    }
+
+    public void viewClick(View view) {
+        startActivity(new Intent(getApplicationContext(), ViewClickActivity.class));
+    }
+    public void viewExposure(View view) {
+        startActivity(new Intent(getApplicationContext(), ViewExposureActivity.class));
     }
 
     public void windowInsets(View view) {

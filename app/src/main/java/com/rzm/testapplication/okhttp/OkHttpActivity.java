@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -26,6 +27,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.internal.cache.CacheInterceptor;
 import okhttp3.internal.io.FileSystem;
 import okio.Sink;
 import okio.Source;
@@ -40,6 +42,8 @@ public class OkHttpActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient.Builder()
                 .dispatcher(new Dispatcher())
                 .followRedirects(true) //允许重定向
+                .dns(new HttpDns()) // 网络优化之 dns优化
+                .addNetworkInterceptor(new NetCacheInterceptor()) //自定义支持Cache-Control
                 .proxy(Proxy.NO_PROXY)
                 .cache(new Cache(new File(""), 100))
                 .cookieJar(new CookieJar() {
@@ -66,9 +70,15 @@ public class OkHttpActivity extends AppCompatActivity {
                 .add("format", "json")
                 .build();
 
+
+        //通过CacheControl.Builder()定制自己的缓存策略，可选的设置方法如下：
+        CacheControl cacheControl = new CacheControl.Builder()
+                .maxStale(10, TimeUnit.SECONDS)
+                .maxAge(10, TimeUnit.SECONDS)
+                .build();
         Request request = new Request.Builder()
                 .url("https://www.baidu.com")
-
+                .cacheControl(cacheControl)
                 .post(body)
                 .build();
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.rzm.testapplication">
+    package="com.rzm.testapplication" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- argus_apm需要申请如下权限 -->
@@ -21,7 +21,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestApplication">
+        android:theme="@style/Theme.TestApplication" >
+        <activity
+            android:name=".android_api.view.view_click.ViewClickActivity"
+            android:exported="false" />
+        <activity
+            android:name=".android_api.view.view_exposure.ViewExposureActivity"
+            android:exported="false" />
         <activity
             android:name=".android_api.windowInsets.WindowInsetsActivity"
             android:exported="false" />
@@ -155,7 +161,7 @@
         <activity
             android:name=".okhttp.OkHttpActivity"
             android:exported="false" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
