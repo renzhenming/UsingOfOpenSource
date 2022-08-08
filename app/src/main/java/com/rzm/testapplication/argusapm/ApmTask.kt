@@ -28,7 +28,7 @@ class ApmTask : AndroidStartup<Void>() {
         val t = if (Looper.myLooper() == Looper.getMainLooper()) "主线程: " else "子线程: "
         LogUtils.log("$t ApmTask：start")
         //TODO 从ArgusApm demo中拿来的代码
-        val isUi = TextUtils.equals(context.packageName, ProcessUtils.getCurrentProcessName())
+//        val isUi = TextUtils.equals(context.packageName, ProcessUtils.getCurrentProcessName())
         val builder = Config.ConfigBuilder()
             .setAppContext(context)
             .setRuleRequest(RuleSyncRequest())
@@ -38,7 +38,8 @@ class ApmTask : AndroidStartup<Void>() {
             .setApmid("apm_demo") //该ID是在APM的后台进行申请的
         //单进程应用可忽略builder.setDisabled相关配置。
         //单进程应用可忽略builder.setDisabled相关配置。
-        if (!isUi) { //除了“主进程”，其他进程不需要进行数据上报、清理等逻辑。“主进程”通常为常驻进行，如果无常驻进程，即为UI进程。
+//        if (!isUi) { //除了“主进程”，其他进程不需要进行数据上报、清理等逻辑。“主进程”通常为常驻进行，如果无常驻进程，即为UI进程。
+       if(true) {
             builder.setDisabled(ApmTask.FLAG_DATA_CLEAN)
                 .setDisabled(ApmTask.FLAG_CLOUD_UPDATE)
                 .setDisabled(ApmTask.FLAG_DATA_UPLOAD)

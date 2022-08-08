@@ -8,6 +8,7 @@ import com.rzm.testapplication.LogUtils
 import com.rzm.testapplication.R
 import com.rzm.testapplication.anr.anrmonitor.AnrMonitorActivity
 import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogActivity
+import com.rzm.testapplication.anr.bitmapcanary.BitmapCanaryActivity
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryActivity
 import kotlin.concurrent.thread
 
@@ -48,5 +49,9 @@ class AnrActivity : AppCompatActivity() {
 
     fun anrMonitor(view: View) {
         startActivity(Intent(applicationContext, AnrMonitorActivity::class.java))
+    }
+
+    fun bitmapCanary(view: View) {
+        startActivity(Intent(applicationContext, BitmapCanaryActivity::class.java))
     }
 }

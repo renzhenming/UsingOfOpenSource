@@ -3,32 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".anr.AnrActivity">
 
     <Button
         android:layout_width="match_parent"
-        android:text="模拟anr"
+        android:layout_height="wrap_content"
+        android:onClick="bitmapCanary"
+        android:text="bitmapCanary" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="testAnr"
-        android:layout_height="wrap_content"/>
+        android:text="模拟anr" />
 
     <Button
         android:layout_width="match_parent"
-        android:text="blockCanary"
+        android:layout_height="wrap_content"
         android:onClick="blockCanary"
-        android:layout_height="wrap_content"/>
+        android:text="blockCanary" />
 
     <Button
         android:layout_width="match_parent"
-        android:text="anrWatchDog"
+        android:layout_height="wrap_content"
         android:onClick="anrWatchDog"
-        android:layout_height="wrap_content"/>
+        android:text="anrWatchDog" />
 
     <Button
         android:layout_width="match_parent"
-        android:text="anrMonitor"
+        android:layout_height="wrap_content"
         android:onClick="anrMonitor"
-        android:layout_height="wrap_content"/>
+        android:text="anrMonitor" />
 
 </LinearLayout>

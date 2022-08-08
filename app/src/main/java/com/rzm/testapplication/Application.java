@@ -13,6 +13,7 @@ import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
 import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogTask;
+import com.rzm.testapplication.anr.bitmapcanary.BitmapCanaryTask;
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
 import com.rzm.testapplication.argusapm.ApmTask;
 import com.rzm.testapplication.arouter.ARouterTask;
@@ -37,6 +38,7 @@ public class Application extends android.app.Application {
 
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new BitmapCanaryTask())
                 .addStartup(new ApmTask())
                 .addStartup(new KoomTask())
                 .addStartup(new BlockCanaryTask())
