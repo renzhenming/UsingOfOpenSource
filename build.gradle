@@ -13,6 +13,9 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath 'com.qihoo360.argusapm:argus-apm-gradle-asm:3.0.1.1001'
+
+        //TODO 编译没有通过 先放着吧
+//        classpath 'io.github.didi.dokit:dokitx-plugin:3.5.0'
     }
 }
 

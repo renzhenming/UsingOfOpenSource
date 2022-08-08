@@ -15,6 +15,7 @@ import com.rzm.testapplication.android_api.TestAndroidApiActivity;
 import com.rzm.testapplication.anr.AnrActivity;
 import com.rzm.testapplication.argusapm.ArgusApmActivity;
 import com.rzm.testapplication.arouter.ARouterActivity;
+import com.rzm.testapplication.dokit.DokitActivity;
 import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
@@ -82,9 +83,14 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateView(name, context, attrs);
     }
 
+    public void dokit(View view) {
+        startActivity(new Intent(getApplicationContext(), DokitActivity.class));
+    }
+
     public void argus(View view) {
         startActivity(new Intent(getApplicationContext(), ArgusApmActivity.class));
     }
+
     public void anr(View view) {
         startActivity(new Intent(getApplicationContext(), AnrActivity.class));
     }

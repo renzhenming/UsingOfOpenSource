@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".dokit.DokitActivity"
+            android:exported="false" />
+        <activity
             android:name=".anr.bitmapcanary.BitmapCanaryActivity"
             android:exported="false" />
         <activity

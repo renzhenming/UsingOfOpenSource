@@ -17,6 +17,9 @@ import java.util.jar.JarOutputStream
 
 plugins {
     id 'com.android.application'
+
+    //TODO 编译没有通过 先放着吧
+//    id 'com.didi.dokit'
 }
 
 plugins {
@@ -96,6 +99,43 @@ android {
     }
 }
 
+//TODO 编译没有通过 先放着吧
+//dokit
+//dokitExt {
+//    //通用设置
+//    comm {
+//        //地图经纬度开关
+//        gpsSwitch true
+//        //网络开关
+//        networkSwitch true
+//        //大图开关
+//        bigImgSwitch true
+//        //webView js 抓包
+//        webViewSwitch true
+//    }
+//
+//    slowMethod {
+//        //调用栈模式配置 对应gradle.properties中DOKIT_METHOD_STRATEGY=0
+//        stackMethod {
+//            //默认值为 5ms 小于该值的函数在调用栈中不显示
+//            thresholdTime 10
+//            //调用栈函数入口 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的入口 假如不需要可以去掉该字段
+//            //enterMethods = ["com.didichuxing.doraemondemo.MainDebugActivity.test1"]
+//            //黑名单 粒度最小到类 暂不支持到方法  千万不要用我默认的配置 如果有特殊需求修改成项目中自己的入口 假如不需要可以去掉该字段
+//            //methodBlacklist = ["com.facebook.drawee.backends.pipeline.Fresco"]
+//        }
+//        //普通模式配置 对应gradle.properties中DOKIT_METHOD_STRATEGY=1
+//        normalMethod {
+//            //默认值为 500ms 小于该值的函数在运行时不会在控制台中被打印
+//            thresholdTime 500
+//            //需要针对函数插装的包名 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的项目包名 假如不需要可以去掉该字段
+//            //packageNames = ["com.didichuxing.doraemondemo"]
+//            //不需要针对函数插装的包名&类名 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的项目包名 假如不需要可以去掉该字段
+//            //methodBlacklist = ["com.didichuxing.doraemondemo.dokit"]
+//        }
+//    }
+//}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
@@ -152,6 +192,12 @@ dependencies {
     //koom
     implementation "com.kuaishou.koom:koom-java-leak:2.2.0"
     implementation "com.kuaishou.koom:koom-monitor-base:2.2.0"
+
+    //dokit
+    //TODO 编译没有通过 先放着吧
+    //TODO Execution failed for task ':app:processDebugManifest'.
+    //TODO org.xml.sax.SAXParseException; systemId: file:/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/merged_manifests/debug/; lineNumber: 1; columnNumber: 1; 前言中不允许有内容。
+//    debugImplementation "io.github.didi.dokit:dokitx:3.5.0"
 
 //    // 仅在debug包启用BlockCanary进行卡顿监控和提示的话，可以这么用
 //    debugImplementation 'com.github.markzhai:blockcanary-android:1.5.0'

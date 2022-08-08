@@ -17,6 +17,7 @@ import com.rzm.testapplication.anr.bitmapcanary.BitmapCanaryTask;
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
 import com.rzm.testapplication.argusapm.ApmTask;
 import com.rzm.testapplication.arouter.ARouterTask;
+import com.rzm.testapplication.dokit.DokitTask;
 import com.rzm.testapplication.execptionhandler.ExceptionHandlerTask;
 import com.rzm.testapplication.oom.koom.KoomTask;
 import com.rzm.testapplication.startup.my_startup.startup.manage.StartupManager;
@@ -38,6 +39,7 @@ public class Application extends android.app.Application {
 
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new DokitTask())
                 .addStartup(new BitmapCanaryTask())
                 .addStartup(new ApmTask())
                 .addStartup(new KoomTask())
