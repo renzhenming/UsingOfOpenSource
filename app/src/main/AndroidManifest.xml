@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".android_api.fps.FpsActivity"
+            android:exported="false" />
+        <activity
             android:name=".dokit.DokitActivity"
             android:exported="false" />
         <activity

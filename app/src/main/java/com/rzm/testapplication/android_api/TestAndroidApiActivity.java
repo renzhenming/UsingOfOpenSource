@@ -9,6 +9,7 @@ import android.view.View;
 import com.rzm.testapplication.R;
 import com.rzm.testapplication.android_api.ams.ActivityManagerServiceActivity;
 import com.rzm.testapplication.android_api.databinding.DatabindingActivity;
+import com.rzm.testapplication.android_api.fps.FpsActivity;
 import com.rzm.testapplication.android_api.livedata.LiveDataActivity;
 import com.rzm.testapplication.android_api.view.view_click.ViewClickActivity;
 import com.rzm.testapplication.android_api.view.view_exposure.ViewExposureActivity;
@@ -24,9 +25,14 @@ public class TestAndroidApiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_android_api);
     }
 
+    public void fps(View view) {
+        startActivity(new Intent(getApplicationContext(), FpsActivity.class));
+    }
+
     public void viewClick(View view) {
         startActivity(new Intent(getApplicationContext(), ViewClickActivity.class));
     }
+
     public void viewExposure(View view) {
         startActivity(new Intent(getApplicationContext(), ViewExposureActivity.class));
     }

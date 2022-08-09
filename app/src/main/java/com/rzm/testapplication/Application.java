@@ -12,6 +12,7 @@ import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ProcessLifecycleOwner;
 
+import com.rzm.testapplication.android_api.fps.FpsTask;
 import com.rzm.testapplication.anr.anrwatchdog.AnrWatchDogTask;
 import com.rzm.testapplication.anr.bitmapcanary.BitmapCanaryTask;
 import com.rzm.testapplication.anr.blockcanary.BlockCanaryTask;
@@ -39,6 +40,7 @@ public class Application extends android.app.Application {
 
         //my-startup
         new StartupManager.Builder()
+                .addStartup(new FpsTask())
                 .addStartup(new DokitTask())
                 .addStartup(new BitmapCanaryTask())
                 .addStartup(new ApmTask())

@@ -10,13 +10,21 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="fps"
+        android:text="fps" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="viewClick"
         android:text="viewClick" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="viewExposure"
         android:text="viewExposure" />
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

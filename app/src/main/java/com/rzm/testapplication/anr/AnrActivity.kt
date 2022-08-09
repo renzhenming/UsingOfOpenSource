@@ -19,24 +19,25 @@ class AnrActivity : AppCompatActivity() {
     }
 
     fun testAnr(view: View) {
-        val lock1 = Object()
-        val lock2 = Object()
-        //子线程持有锁1，想要竞争锁2
-        thread {
-            synchronized(lock1) {
-                Thread.sleep(100)
-                synchronized(lock2) {
-                    LogUtils.log("testAnr: getLock2")
-                }
-            }
-        }
-        //主线程持有锁2，想要竞争锁1
-        synchronized(lock2) {
-            Thread.sleep(100)
-            synchronized(lock1) {
-                LogUtils.log("testAnr: getLock1")
-            }
-        }
+        Thread.sleep(3000)
+//        val lock1 = Object()
+//        val lock2 = Object()
+//        //子线程持有锁1，想要竞争锁2
+//        thread {
+//            synchronized(lock1) {
+//                Thread.sleep(100)
+//                synchronized(lock2) {
+//                    LogUtils.log("testAnr: getLock2")
+//                }
+//            }
+//        }
+//        //主线程持有锁2，想要竞争锁1
+//        synchronized(lock2) {
+//            Thread.sleep(100)
+//            synchronized(lock1) {
+//                LogUtils.log("testAnr: getLock1")
+//            }
+//        }
     }
 
     fun blockCanary(view: View) {
