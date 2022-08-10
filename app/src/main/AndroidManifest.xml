@@ -157,10 +157,10 @@
             android:name=".java_api.TestJavaApiActivity"
             android:exported="false" />
         <activity
-            android:name=".arouter.ARouterActivity2"
+            android:name="com.rzm.testapplication.router.arouter.ARouterActivity2"
             android:exported="false" />
         <activity
-            android:name=".arouter.ARouterActivity"
+            android:name="com.rzm.testapplication.router.arouter.ARouterActivity"
             android:exported="false" />
         <activity
             android:name=".retrofit.RetrofitActivity"

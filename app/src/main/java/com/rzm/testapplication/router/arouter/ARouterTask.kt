@@ -1,4 +1,4 @@
-package com.rzm.testapplication.arouter
+package com.rzm.testapplication.router.arouter
 
 import android.app.Application
 import android.content.Context
