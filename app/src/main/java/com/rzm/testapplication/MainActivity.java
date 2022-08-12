@@ -20,8 +20,8 @@ import com.rzm.testapplication.fragment.TestFragmentActivity;
 import com.rzm.testapplication.glide.GlideActivity;
 import com.rzm.testapplication.java_api.TestJavaApiActivity;
 import com.rzm.testapplication.oom.OOMActivity;
-import com.rzm.testapplication.okhttp.OkHttpActivity;
-import com.rzm.testapplication.retrofit.RetrofitActivity;
+import com.rzm.testapplication.net.okhttp.OkHttpActivity;
+import com.rzm.testapplication.net.retrofit.RetrofitActivity;
 import com.rzm.testapplication.startup.StartupActivity;
 
 public class MainActivity extends AppCompatActivity {

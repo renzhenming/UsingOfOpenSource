@@ -58,6 +58,10 @@ android {
         }
 
         dataBinding.enabled = true
+//        TODO 开启就编译失败了，先不管了
+//        viewBinding {
+//            enabled = true
+//        }
 
         externalNativeBuild {
             cmake {
@@ -172,7 +176,26 @@ dependencies {
     implementation 'com.github.renzhenming:CrashHanlder:1.0.0'
 
     //ProcessLifecycleOwner需要用到
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    //implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    // 过时方式（lifecycle-extensions 不再维护）
+    //implementation "androidx.lifecycle:lifecycle-extensions:2.4.0"
+
+    // 目前的方式：
+    def lifecycle_version = "2.5.0"
+
+    // Lifecycle 核心类
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    // Lifecycle 注解处理器（用于处理 @OnLifecycleEvent 注解）
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    // 应用进程级别 Lifecycle
+    implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
 
     //android-startup
     implementation 'io.github.idisfkj:android-startup:1.1.0'

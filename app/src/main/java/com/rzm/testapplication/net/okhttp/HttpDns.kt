@@ -1,4 +1,4 @@
-package com.rzm.testapplication.okhttp
+package com.rzm.testapplication.net.okhttp
 
 import android.text.TextUtils
 import okhttp3.Dns

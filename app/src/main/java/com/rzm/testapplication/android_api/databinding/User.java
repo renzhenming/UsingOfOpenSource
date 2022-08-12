@@ -3,7 +3,7 @@ package com.rzm.testapplication.android_api.databinding;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.rzm.testapplication.BR;
+//import com.rzm.testapplication.BR;
 
 // Model
 public class User extends BaseObservable {
@@ -25,7 +25,7 @@ public class User extends BaseObservable {
 
     public void setHeadUrl(String headUrl) {
         this.headUrl = headUrl;
-        notifyPropertyChanged(BR.headUrl); // APT又是注解处理器技术 BR文件
+//        notifyPropertyChanged(BR.headUrl); // APT又是注解处理器技术 BR文件
     }
 
     @Bindable // BR里面标记生成 name数值标记
@@ -35,7 +35,7 @@ public class User extends BaseObservable {
 
     public void setName(String name) {
         this.name = name;
-        notifyPropertyChanged(BR.name); // APT又是注解处理器技术 BR文件
+//        notifyPropertyChanged(BR.name); // APT又是注解处理器技术 BR文件
     }
 
     @Bindable // BR里面标记生成 pwd数值标记
@@ -45,6 +45,6 @@ public class User extends BaseObservable {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
-        notifyPropertyChanged(BR.pwd); // APT又是注解处理器技术 BR文件
+//        notifyPropertyChanged(BR.pwd); // APT又是注解处理器技术 BR文件
     }
 }

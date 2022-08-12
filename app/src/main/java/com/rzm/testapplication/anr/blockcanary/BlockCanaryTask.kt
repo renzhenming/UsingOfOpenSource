@@ -8,11 +8,11 @@ import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup
 
 class BlockCanaryTask : AndroidStartup<Void>() {
     override fun callCreateOnMainThread(): Boolean {
-        return true;
+        return true
     }
 
     override fun waitOnMainThread(): Boolean {
-        return true;
+        return true
     }
 
     override fun create(context: Context): Void? {

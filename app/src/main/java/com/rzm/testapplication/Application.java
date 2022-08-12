@@ -118,33 +118,33 @@ public class Application extends android.app.Application {
 
     public class ApplicationObserver implements LifecycleObserver {
         @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-        private void onCreate() {
+        public void onCreate() {
             Log.i("Application", "OnCreate");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_START)
-        private void onStart() {
+        public void onStart() {
             Log.i("Application", "OnStart");
         }
 
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-        private void onResume() {
+        public void onResume() {
             Log.i("Application", "OnResume");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-        private void onPause() {
+        public void onPause() {
             Log.i("Application", "OnPause");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
-        private void onStop() {
+        public void onStop() {
             Log.i("Application", "OnStop");
         }
 
         @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        private void onDestroy() {
+        public void onDestroy() {
             Log.i("Application", "OnPause");
         }
     }

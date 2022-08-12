@@ -1,4 +1,4 @@
-package com.rzm.testapplication.okhttp;
+package com.rzm.testapplication.net.okhttp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.rzm.testapplication.R;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.Proxy;
 import java.util.List;
@@ -27,10 +26,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.internal.cache.CacheInterceptor;
-import okhttp3.internal.io.FileSystem;
-import okio.Sink;
-import okio.Source;
 
 public class OkHttpActivity extends AppCompatActivity {
 

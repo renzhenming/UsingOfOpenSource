@@ -1,4 +1,4 @@
-package com.rzm.testapplication.okhttp
+package com.rzm.testapplication.net.okhttp
 
 import okhttp3.Interceptor
 import okhttp3.Response

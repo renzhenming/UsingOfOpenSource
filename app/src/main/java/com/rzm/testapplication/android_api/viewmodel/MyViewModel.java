@@ -13,4 +13,10 @@ public class MyViewModel extends ViewModel {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
+        //清楚引用关系，防止内存泄漏
+    }
 }

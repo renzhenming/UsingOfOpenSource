@@ -163,13 +163,13 @@
             android:name="com.rzm.testapplication.router.arouter.ARouterActivity"
             android:exported="false" />
         <activity
-            android:name=".retrofit.RetrofitActivity"
+            android:name=".net.retrofit.RetrofitActivity"
             android:exported="false" />
         <activity
             android:name=".glide.GlideActivity"
             android:exported="false" />
         <activity
-            android:name=".okhttp.OkHttpActivity"
+            android:name="com.rzm.testapplication.net.okhttp.OkHttpActivity"
             android:exported="false" />
         <activity android:name=".MainActivity">
             <intent-filter>

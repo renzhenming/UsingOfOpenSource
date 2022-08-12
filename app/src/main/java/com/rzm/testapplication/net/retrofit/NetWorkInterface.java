@@ -1,10 +1,7 @@
-package com.rzm.testapplication.retrofit;
-
-import java.util.List;
+package com.rzm.testapplication.net.retrofit;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 
 public interface NetWorkInterface {
 
