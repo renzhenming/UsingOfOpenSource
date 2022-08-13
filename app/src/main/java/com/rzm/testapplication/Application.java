@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Debug;
 import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
@@ -40,24 +41,43 @@ public class Application extends android.app.Application {
 
         Debug.startMethodTracingSampling(new File(getFilesDir(), "trace2").getAbsolutePath(), 8 * 1024 * 1024, 1000);
 
-        //my-startup
-        new StartupManager.Builder()
-                .addStartup(new FpsTask())
-                .addStartup(new DokitTask())
-                .addStartup(new BitmapCanaryTask())
-                .addStartup(new ApmTask())
-                .addStartup(new KoomTask())
-                .addStartup(new BlockCanaryTask())
-                .addStartup(new ExceptionHandlerTask())
-                .addStartup(new ARouterTask())
-                .addStartup(new AnrWatchDogTask())
-                .addStartup(new Task5())
-                .addStartup(new Task4())
-                .addStartup(new Task3())
-                .addStartup(new Task2())
-                .addStartup(new Task1())
-                .build(this)
-                .start().await();
+        boolean optimize = true;
+
+        if (!optimize) {
+            new FpsTask().create(this);
+            new DokitTask().create(this);
+            new BitmapCanaryTask().create(this);
+            new ApmTask().create(this);
+            new KoomTask().create(this);
+            new BlockCanaryTask().create(this);
+            new ExceptionHandlerTask().create(this);
+            new ARouterTask().create(this);
+            new AnrWatchDogTask().create(this);
+            new Task5().create(this);
+            new Task4().create(this);
+            new Task3().create(this);
+            new Task2().create(this);
+            new Task1().create(this);
+        } else {
+            //my-startup
+            new StartupManager.Builder()
+                    .addStartup(new FpsTask())
+                    .addStartup(new DokitTask())
+                    .addStartup(new BitmapCanaryTask())
+                    .addStartup(new ApmTask())
+                    .addStartup(new KoomTask())
+                    .addStartup(new BlockCanaryTask())
+                    .addStartup(new ExceptionHandlerTask())
+                    .addStartup(new ARouterTask())
+                    .addStartup(new AnrWatchDogTask())
+                    .addStartup(new Task5())
+                    .addStartup(new Task4())
+                    .addStartup(new Task3())
+                    .addStartup(new Task2())
+                    .addStartup(new Task1())
+                    .build(this)
+                    .start().await();
+        }
         LogUtils.log("StartupManager tasks all finished");
 
         //android-startup

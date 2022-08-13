@@ -16,6 +16,10 @@ buildscript {
 
         //TODO 编译没有通过 先放着吧
 //        classpath 'io.github.didi.dokit:dokitx-plugin:3.5.0'
+
+        //锁定 CPU 频率
+        // ./gradlew lockClocks 调用这行命令锁定cpu频率
+        classpath "androidx.benchmark:benchmark-gradle-plugin:1.0.0"
     }
 }
 

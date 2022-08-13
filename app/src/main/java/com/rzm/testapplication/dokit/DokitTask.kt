@@ -1,9 +1,7 @@
 package com.rzm.testapplication.dokit
 
-import android.app.Application
 import android.content.Context
 import android.os.Looper
-//import com.didichuxing.doraemonkit.DoKit
 import com.rzm.testapplication.LogUtils
 import com.rzm.testapplication.startup.my_startup.startup.AndroidStartup
 
@@ -26,6 +24,8 @@ class DokitTask : AndroidStartup<Void>() {
 //        DoKit.Builder(context as Application)
 //            .productId("DokitTask___")
 //            .build()
+
+        Thread.sleep(300)
 
         LogUtils.log("$t DokitTask：start")
         return null

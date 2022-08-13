@@ -33,9 +33,9 @@ class FpsTask : AndroidStartup<Void>() {
             if (mLastFrameTimeNanos == 0L) {
                 mLastFrameTimeNanos = frameTimeNanos;
             }
-            LogUtils.log(
-                "FpsActivity ===== current frame = $frameTimeNanos, last frame = $mLastFrameTimeNanos"
-            )
+//            LogUtils.log(
+//                "FpsActivity ===== current frame = $frameTimeNanos, last frame = $mLastFrameTimeNanos"
+//            )
             var jitterNanos = frameTimeNanos - mLastFrameTimeNanos;
             if (jitterNanos >= mFrameIntervalNanos) {
                 var skippedFrames = jitterNanos / mFrameIntervalNanos;

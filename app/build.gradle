@@ -20,6 +20,7 @@ plugins {
 
     //TODO 编译没有通过 先放着吧
 //    id 'com.didi.dokit'
+    id 'androidx.benchmark'
 }
 
 plugins {

@@ -11,6 +11,7 @@ import java.util.concurrent.Executor;
 
 /**
  * https://mp.weixin.qq.com/s?__biz=MzIzNTc5NDY4Nw==&mid=2247484560&idx=1&sn=39e02098d66d6228970bdc8df09fba42&chksm=e8e0fd00df977416066c25f6560e27ba0ad75abb3ab0ade0afd85df866850671a997dc609c5d&token=846567760&lang=zh_CN#rd
+ *
  * @param <T>
  */
 public abstract class AndroidStartup<T> implements Startup<T> {
