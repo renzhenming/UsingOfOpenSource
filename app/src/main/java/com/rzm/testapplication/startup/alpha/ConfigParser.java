@@ -16,11 +16,11 @@
 
 package com.rzm.testapplication.startup.alpha;
 
-import android.text.TextUtils;
-import android.util.Xml;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
+
+import android.text.TextUtils;
+import android.util.Xml;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

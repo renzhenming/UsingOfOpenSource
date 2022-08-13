@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".startup.alpha.AlphaActivity"
+            android:exported="false" />
+        <activity
             android:name=".android_api.fps.FpsActivity"
             android:exported="false" />
         <activity
@@ -157,10 +160,10 @@
             android:name=".java_api.TestJavaApiActivity"
             android:exported="false" />
         <activity
-            android:name="com.rzm.testapplication.router.arouter.ARouterActivity2"
+            android:name=".router.arouter.ARouterActivity2"
             android:exported="false" />
         <activity
-            android:name="com.rzm.testapplication.router.arouter.ARouterActivity"
+            android:name=".router.arouter.ARouterActivity"
             android:exported="false" />
         <activity
             android:name=".net.retrofit.RetrofitActivity"
@@ -169,7 +172,7 @@
             android:name=".glide.GlideActivity"
             android:exported="false" />
         <activity
-            android:name="com.rzm.testapplication.net.okhttp.OkHttpActivity"
+            android:name=".net.okhttp.OkHttpActivity"
             android:exported="false" />
         <activity android:name=".MainActivity">
             <intent-filter>
