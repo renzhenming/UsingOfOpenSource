@@ -1,0 +1,72 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication",
+      "sdkFolder": "/Users/renzhenming/Library/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app",
+      "makeFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/.cxx",
+      "cxxFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx",
+      "ndkFolder": "/Users/renzhenming/android-ndk-r22b",
+      "ndkVersion": "22.1.7171670",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "release",
+    "soFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/release/lib",
+    "objFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/release/obj",
+    "jsonFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release",
+    "gradleBuildOutputFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARMEABI_V7A",
+  "abiPlatformVersion": 22,
+  "cxxBuildFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a",
+  "jsonFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a",
+  "objFolder": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/release/obj/armeabi-v7a",
+  "buildCommandFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/build_command.txt",
+  "buildOutputFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/build_output.txt",
+  "modelOutputFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/build_generation_state.json",
+    "cacheKeyFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cxx/release/armeabi-v7a/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a/compile_commands.json"
+}

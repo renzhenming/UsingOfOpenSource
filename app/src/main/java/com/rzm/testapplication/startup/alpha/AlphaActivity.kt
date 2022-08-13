@@ -17,7 +17,7 @@ class AlphaActivity : AppCompatActivity() {
 
     fun start(view: View) {
         val test = ConfigTest(applicationContext)
-        test.setOnProjectExecuteListener(object : OnProjectExecuteListener() {
+        test.setOnProjectExecuteListener(object : OnProjectExecuteListener {
             override fun onProjectStart() {}
             override fun onTaskFinish(taskName: String?) {}
             override fun onProjectFinish() {

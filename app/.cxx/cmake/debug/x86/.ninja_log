@@ -1,0 +1,20 @@
+# ninja log v5
+0	19	0	clean	f6b3a861aca1db4c
+0	24	0	clean	f6b3a861aca1db4c
+0	13	0	clean	f6b3a861aca1db4c
+1	85	1659942649	CMakeFiles/native-lib.dir/dlopen.c.o	8dba496a091dd8eb
+0	329	1659942649	CMakeFiles/native-lib.dir/native-lib.cpp.o	c58dceae37aef065
+329	378	1659942649	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	f7bbc2af2fd7494c
+0	13	0	clean	f6b3a861aca1db4c
+2	56	1659944553	CMakeFiles/native-lib.dir/dlopen.c.o	8dba496a091dd8eb
+2	291	1659944553	CMakeFiles/native-lib.dir/native-lib.cpp.o	c58dceae37aef065
+291	339	1659944553	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	f7bbc2af2fd7494c
+1	13	0	clean	f6b3a861aca1db4c
+1	77	1659944661	CMakeFiles/native-lib.dir/dlopen.c.o	8dba496a091dd8eb
+1	314	1659944661	CMakeFiles/native-lib.dir/native-lib.cpp.o	c58dceae37aef065
+314	360	1659944661	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	f7bbc2af2fd7494c
+3	61	1659950344	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	f7bbc2af2fd7494c
+0	95	0	clean	f6b3a861aca1db4c
+1	769	1660102491	CMakeFiles/native-lib.dir/native-lib.cpp.o	c58dceae37aef065
+2	966	1660102491	CMakeFiles/native-lib.dir/dlopen.c.o	8dba496a091dd8eb
+966	1545	1660102491	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so	f7bbc2af2fd7494c
