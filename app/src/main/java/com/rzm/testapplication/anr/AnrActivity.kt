@@ -2,6 +2,7 @@ package com.rzm.testapplication.anr
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Trace
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.rzm.testapplication.LogUtils
@@ -19,6 +20,7 @@ class AnrActivity : AppCompatActivity() {
     }
 
     fun testAnr(view: View) {
+        Trace.beginSection("");
         Thread.sleep(3000)
 //        val lock1 = Object()
 //        val lock2 = Object()
@@ -54,5 +56,15 @@ class AnrActivity : AppCompatActivity() {
 
     fun bitmapCanary(view: View) {
         startActivity(Intent(applicationContext, BitmapCanaryActivity::class.java))
+    }
+
+
+    fun testBlock(view: View) {
+        bitmapCanary(View(this))
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Thread.sleep(5000)
     }
 }

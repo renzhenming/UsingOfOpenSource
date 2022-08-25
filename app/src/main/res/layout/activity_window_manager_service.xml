@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".android_api.wms.WindowManagerServiceActivity">
 
@@ -10,5 +11,11 @@
         android:layout_width="match_parent"
         android:text="展示悬浮窗"
         android:onClick="show"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="展示application创建的dialog"
+        android:onClick="showApplicationDialog"
         android:layout_height="wrap_content"/>
 </LinearLayout>

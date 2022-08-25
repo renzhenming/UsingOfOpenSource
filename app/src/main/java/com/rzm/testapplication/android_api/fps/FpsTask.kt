@@ -45,6 +45,10 @@ class FpsTask : AndroidStartup<Void>() {
                         "FpsActivity ===== Skipped " + skippedFrames + " frames!  "
                                 + "The application may be doing too much work on its main thread."
                     )
+                    val stack = CommonUtils.getStack()
+                    val processName = ProcessUtils.getCurrentProcessName()
+                    LogUtils.log("FpsActivity ===== processName = $processName\n stack = $stack \n")
+
                 }
             }
             mLastFrameTimeNanos = frameTimeNanos

@@ -14,6 +14,7 @@ class FpsActivity : AppCompatActivity() {
     }
 
     fun listen(view: View) {
-
+        var task = FpsTask_argus()
+        task.start()
     }
 }

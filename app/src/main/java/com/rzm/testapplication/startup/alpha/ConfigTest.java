@@ -28,7 +28,7 @@ import java.util.Map;
  */
 
 public class ConfigTest {
-    private static final String TAG = "StartUpConfig";
+    private static final String TAG = "StartUpConfig ";
     private Context mContext;
 
     private OnProjectExecuteListener mOnProjectExecuteListener;
