@@ -18,7 +18,9 @@ class BlockCanaryTask : AndroidStartup<Void>() {
     override fun create(context: Context): Void? {
         val t = if (Looper.myLooper() == Looper.getMainLooper()) "主线程: " else "子线程: "
         LogUtils.log("$t BlockCanaryTask：start")
-        BlockCanary.install(context, AppBlockCanaryContext()).start()
+        BlockCanary
+            .install(context, AppBlockCanaryContext())
+            .start()
         LogUtils.log("$t BlockCanaryTask：end")
         return null
     }

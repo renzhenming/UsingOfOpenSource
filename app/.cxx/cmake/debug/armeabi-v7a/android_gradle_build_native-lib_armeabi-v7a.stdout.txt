@@ -1,2 +1,9 @@
 ninja: Entering directory `/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/debug/armeabi-v7a'
-ninja: no work to do.
+[1/3] Building C object CMakeFiles/native-lib.dir/dlopen.c.o
+/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.c:99:13: warning: implicitly declaring library function 'memcpy' with type 'void *(void *, const void *, unsigned int)' [-Wimplicit-function-declaration]
+            memcpy(__insns, "\x08\xE0\x2D\xE5\x02\xE0\xA0\xE1\x13\xFF\x2F\xE1", 12);
+            ^
+/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.c:99:13: note: include the header <string.h> or explicitly provide a declaration for 'memcpy'
+1 warning generated.
+[2/3] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+[3/3] Linking CXX shared library /Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so

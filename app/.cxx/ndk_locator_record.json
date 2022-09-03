@@ -1,5 +1,5 @@
 {
-  "ndkFolder": "/Users/renzhenming/android-ndk-r22b",
+  "ndkFolder": "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462",
   "messages": [
     {
       "level": "INFO",
@@ -7,7 +7,7 @@
     },
     {
       "level": "INFO",
-      "message": "ndk.dir in local.properties is /Users/renzhenming/android-ndk-r22b"
+      "message": "ndk.dir in local.properties is /Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462"
     },
     {
       "level": "INFO",
@@ -19,11 +19,15 @@
     },
     {
       "level": "INFO",
-      "message": "Considering /Users/renzhenming/android-ndk-r22b by ndk.dir"
+      "message": "Considering /Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462 by ndk.dir"
     },
     {
       "level": "INFO",
       "message": "Considering /Users/renzhenming/Library/Android/sdk/ndk-bundle in SDK ndk-bundle folder"
+    },
+    {
+      "level": "INFO",
+      "message": "Considering /Users/renzhenming/Library/Android/sdk/ndk/21.4.7075529 in SDK ndk folder"
     },
     {
       "level": "INFO",
@@ -43,7 +47,7 @@
     },
     {
       "level": "INFO",
-      "message": "Found requested ndk.dir (/Users/renzhenming/android-ndk-r22b) which has version 22.1.7171670"
+      "message": "Found requested ndk.dir (/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462) which has version 21.1.6352462"
     }
   ]
 }

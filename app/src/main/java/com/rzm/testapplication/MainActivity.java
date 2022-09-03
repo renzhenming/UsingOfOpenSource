@@ -14,6 +14,7 @@ import android.view.View;
 import com.rzm.testapplication.android_api.TestAndroidApiActivity;
 import com.rzm.testapplication.anr.AnrActivity;
 import com.rzm.testapplication.argusapm.ArgusApmActivity;
+import com.rzm.testapplication.kotllincoroutine.CoroutineKotlinActivity;
 import com.rzm.testapplication.router.arouter.ARouterActivity;
 import com.rzm.testapplication.dokit.DokitActivity;
 import com.rzm.testapplication.fragment.TestFragmentActivity;
@@ -127,5 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void testFragment(View view) {
         startActivity(new Intent(getApplicationContext(), TestFragmentActivity.class));
+    }
+
+    public void kcoroutine(View view) {
+        startActivity(new Intent(getApplicationContext(), CoroutineKotlinActivity.class));
     }
 }

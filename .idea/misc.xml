@@ -18,7 +18,9 @@
         <entry key="app/src/main/res/layout/activity_bitmap_canary.xml" value="0.13768115942028986" />
         <entry key="app/src/main/res/layout/activity_block_canary.xml" value="0.12318840579710146" />
         <entry key="app/src/main/res/layout/activity_copy_on_writ_array_list.xml" value="0.17798913043478262" />
+        <entry key="app/src/main/res/layout/activity_coroutine.xml" value="0.21829710144927536" />
         <entry key="app/src/main/res/layout/activity_databinding.xml" value="0.11684782608695653" />
+        <entry key="app/src/main/res/layout/activity_dialog.xml" value="0.1766304347826087" />
         <entry key="app/src/main/res/layout/activity_fps.xml" value="0.19746376811594202" />
         <entry key="app/src/main/res/layout/activity_glide.xml" value="0.20380434782608695" />
         <entry key="app/src/main/res/layout/activity_linked_blocking_queue.xml" value="0.17798913043478262" />

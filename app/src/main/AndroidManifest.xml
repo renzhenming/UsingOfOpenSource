@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TestApplication">
         <activity
+            android:name=".kotllincoroutine.CoroutineKotlinActivity"
+            android:exported="false" />
+        <activity
             android:name=".startup.alpha.AlphaActivity"
             android:exported="false" />
         <activity

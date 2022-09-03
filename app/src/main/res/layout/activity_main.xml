@@ -13,73 +13,93 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="kcoroutine"
+            android:text="协程"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="dokit"
-            android:text="dokit" />
+            android:text="dokit"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="argus"
-            android:text="argus" />
+            android:text="argus"
+            android:textAllCaps="false" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testFragment"
-            android:text="fragment" />
+            android:text="fragment"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="anr"
-            android:text="anr" />
+            android:text="anr"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="oom"
-            android:text="oom" />
+            android:text="oom"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testJavaApi"
-            android:text="java api" />
+            android:text="java api"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testAndroidApi"
-            android:text="android api" />
+            android:text="android api"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="startup"
-            android:text="startup" />
+            android:text="startup"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testOkhttp"
-            android:text="okhttp" />
+            android:text="okhttp"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testGlide"
-            android:text="glide" />
+            android:text="glide"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testRetrofit"
-            android:text="retrofit" />
+            android:text="retrofit"
+            android:textAllCaps="false" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testARouter"
-            android:text="ARouter" />
+            android:text="ARouter"
+            android:textAllCaps="false" />
 
 
     </LinearLayout>
