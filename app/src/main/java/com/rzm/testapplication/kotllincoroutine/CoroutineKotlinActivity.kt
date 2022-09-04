@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import com.rzm.testapplication.R
 import kotlinx.coroutines.*
+import java.util.concurrent.Executors
 
 class CoroutineKotlinActivity : AppCompatActivity() {
     companion object {
@@ -14,6 +15,14 @@ class CoroutineKotlinActivity : AppCompatActivity() {
 
     /**
      * 使用官方库的 MainScope()获取一个协程作用域用于创建协程
+     * GlobalScope在 Android 开发中同样不推荐这种用法，因为它的生命周期会只受整个应用程序的生命周期限制，且不能取消。
+     * 自行通过 CoroutineContext 创建一个 CoroutineScope 对象,比较推荐的使用方法，我们可以通过 context
+     * 参数去管理和控制协程的生命周期（这里的 context 和 Android 里的不是一个东西，是一个更通用的概念，会有一个
+     * Android 平台的封装来配合使用）。
+    val coroutineScope = CoroutineScope(context)
+    coroutineScope.launch {
+    ...
+    }
      */
     private val mScope = MainScope()
 
@@ -72,6 +81,9 @@ class CoroutineKotlinActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * 不要使用 GlobalScope 去启动协程，因为 GlobalScope 启动的协程生命周期与应用程序的生命周期一致，无法取消
+     */
     fun startCoroutineTask(view: View) {
         Log.i(TAG, "================1111111===============")
         GlobalScope.launch {
@@ -148,6 +160,13 @@ class CoroutineKotlinActivity : AppCompatActivity() {
                 TAG,
                 "startMultiAsyncTask: ${job1.await()} ${job2.await()} ${job3.await()} ${job4.await()} ${job5.await()}"
             )
+        }
+    }
+
+    fun scopeTest(){
+        val dispatcher = Executors.newFixedThreadPool(1).asCoroutineDispatcher()
+        val myScope = CoroutineScope(dispatcher)
+        myScope.launch {
         }
     }
 }
