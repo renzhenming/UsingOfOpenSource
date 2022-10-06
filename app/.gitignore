@@ -38,7 +38,7 @@ proguard/
 *.war
 *.ear
 *.iml
-
+*/generated/
 # IDEA Files
 .idea/
 .svn/

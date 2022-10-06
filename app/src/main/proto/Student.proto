@@ -1,0 +1,10 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.rzm.protobuf";
+//生成的java文件名
+option java_outer_classname = "MyStudent";
+
+message Student {
+    string name = 1;
+    int32 age = 2;
+}

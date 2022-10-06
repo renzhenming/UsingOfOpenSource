@@ -27,6 +27,8 @@ plugins {
     //id指的就是resources.META-INF.gradle.plugins中的文件名"com.plugin.patch"
     id 'com.plugin.patch'
     id 'org.jetbrains.kotlin.android'
+    //protobuf
+    id 'com.google.protobuf'
 }
 
 patch {
@@ -102,6 +104,18 @@ android {
         exclude 'META-INF/INDEX.LIST'
         exclude 'META-INF/io.netty.versions.properties'
     }
+
+    sourceSets {
+        main {
+            proto {
+                srcDir 'src/main/proto'
+                include '**/*.proto'
+            }
+            java {
+                srcDir 'src/main/java'
+            }
+        }
+    }
 }
 
 //TODO 编译没有通过 先放着吧
@@ -141,6 +155,33 @@ android {
 //    }
 //}
 
+//protobuf
+protobuf {
+    protoc {
+        // You still need protoc like in the non-Android case
+        artifact = 'com.google.protobuf:protoc:3.0.0'
+    }
+    plugins {
+        javalite {
+            // The codegen for lite comes as a separate artifact
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                // In most cases you don't need the full Java output
+                // if you use the lite output.
+                remove java
+            }
+            task.plugins {
+                javalite { }
+            }
+        }
+    }
+    //将会在 "$projectDir/src/generated"这个目录中自动生成对应的java文件
+    generatedFilesBaseDir = "$projectDir/src/generated"
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.0.0'
@@ -220,6 +261,9 @@ dependencies {
     //websocket
     //implementation "org.java-websocket:Java-WebSocket:1.5.1"
     implementation project(path: ':websocketlib')
+
+    //protobuf
+    implementation 'com.google.protobuf:protobuf-lite:3.0.0'
 
     //dokit
     //TODO 编译没有通过 先放着吧

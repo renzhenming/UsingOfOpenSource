@@ -20,6 +20,8 @@ buildscript {
         //锁定 CPU 频率
         // ./gradlew lockClocks 调用这行命令锁定cpu频率
         classpath "androidx.benchmark:benchmark-gradle-plugin:1.0.0"
+
+        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.13'
     }
 }
 
