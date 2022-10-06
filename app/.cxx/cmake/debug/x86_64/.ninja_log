@@ -1,17 +1,4 @@
 # ninja log v5
-0	46	1659942649	CMakeFiles/native-lib.dir/dlopen.c.o	99a2ed5f8fd42aea
-0	286	1659942649	CMakeFiles/native-lib.dir/native-lib.cpp.o	e245656ecea31953
-286	330	1659942649	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	ea5175fad2b37dd5
-0	12	0	clean	f6b3a861aca1db4c
-2	46	1659944553	CMakeFiles/native-lib.dir/dlopen.c.o	99a2ed5f8fd42aea
-2	300	1659944553	CMakeFiles/native-lib.dir/native-lib.cpp.o	e245656ecea31953
-300	347	1659944553	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	ea5175fad2b37dd5
-0	11	0	clean	f6b3a861aca1db4c
-1	47	1659944661	CMakeFiles/native-lib.dir/dlopen.c.o	99a2ed5f8fd42aea
-1	284	1659944661	CMakeFiles/native-lib.dir/native-lib.cpp.o	e245656ecea31953
-284	330	1659944662	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	ea5175fad2b37dd5
-2	60	1659950344	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	ea5175fad2b37dd5
-0	14	0	clean	f6b3a861aca1db4c
-2	51	1660102491	CMakeFiles/native-lib.dir/dlopen.c.o	99a2ed5f8fd42aea
-2	287	1660102492	CMakeFiles/native-lib.dir/native-lib.cpp.o	e245656ecea31953
-287	345	1660102492	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	ea5175fad2b37dd5
+1	425	1664935357	CMakeFiles/native-lib.dir/dlopen.c.o	31b6a65ffcb9561c
+0	765	1664935357	CMakeFiles/native-lib.dir/native-lib.cpp.o	e21b094fd89aa2b7
+765	853	1664935357	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	7b1945db8d34dcb1

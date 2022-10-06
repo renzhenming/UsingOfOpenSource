@@ -30,6 +30,7 @@ import com.rzm.testapplication.startup.my_startup.tasks.Task2;
 import com.rzm.testapplication.startup.my_startup.tasks.Task3;
 import com.rzm.testapplication.startup.my_startup.tasks.Task4;
 import com.rzm.testapplication.startup.my_startup.tasks.Task5;
+import com.rzm.testapplication.web_socket.WebSocketTask;
 
 import java.io.File;
 
@@ -75,6 +76,7 @@ public class Application extends android.app.Application {
                     .addStartup(new Task3())
                     .addStartup(new Task2())
                     .addStartup(new Task1())
+                    .addStartup(new WebSocketTask())
                     .build(this)
                     .start().await();
         }

@@ -36,6 +36,8 @@
         <entry key="app/src/main/res/layout/activity_view_click.xml" value="0.22083333333333333" />
         <entry key="app/src/main/res/layout/activity_view_exposure.xml" value="0.2056159420289855" />
         <entry key="app/src/main/res/layout/activity_view_model.xml" value="0.12545289855072464" />
+        <entry key="app/src/main/res/layout/activity_web_socket.xml" value="0.21331521739130435" />
+        <entry key="app/src/main/res/layout/activity_web_socket_server.xml" value="0.21331521739130435" />
         <entry key="app/src/main/res/layout/activity_window_insets.xml" value="0.14764492753623187" />
         <entry key="app/src/main/res/layout/activity_window_manager_service.xml" value="0.10461956521739131" />
         <entry key="app/src/main/res/layout/fragment_test.xml" value="0.14990942028985507" />

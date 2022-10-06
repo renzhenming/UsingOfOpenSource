@@ -1,13 +1,12 @@
 {
   "stringTable": {
     "0": "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/x86",
-    "1": "--target=i686-none-linux-android22 --gcc-toolchain=/Users/renzhenming/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/renzhenming/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dnative_lib_EXPORTS -I/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.h -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
+    "1": "--target=i686-none-linux-android22 --gcc-toolchain=/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dnative_lib_EXPORTS -I/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.h -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -O2 -DNDEBUG -fPIC"
   },
   "buildFiles": [
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/platforms.cmake",
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/android.toolchain.cmake",
-    "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/CMakeLists.txt",
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/compiler_id.cmake"
+    "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake",
+    "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/CMakeLists.txt"
   ],
   "cleanCommands": [
     "/Users/renzhenming/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/x86\" clean"
@@ -17,7 +16,7 @@
     "native-lib-Release-x86": {
       "buildCommand": "/Users/renzhenming/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/x86\" native-lib",
       "buildType": "release",
-      "toolchain": "400074656",
+      "toolchain": "1104317568",
       "abi": "x86",
       "artifactName": "native-lib",
       "files": [
@@ -37,9 +36,9 @@
     }
   },
   "toolchains": {
-    "400074656": {
-      "cCompilerExecutable": "/Users/renzhenming/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
-      "cppCompilerExecutable": "/Users/renzhenming/android-ndk-r22b/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    "1104317568": {
+      "cCompilerExecutable": "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+      "cppCompilerExecutable": "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
     }
   },
   "cFileExtensions": [

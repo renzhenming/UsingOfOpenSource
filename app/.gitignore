@@ -43,7 +43,8 @@ proguard/
 .idea/
 .svn/
 out/
-
+.cxx/
+*.cxx/
 # MAVEN COMPILE Files
 target/
 lint.xml

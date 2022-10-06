@@ -1,2 +1,12 @@
 ninja: Entering directory `/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/debug/x86_64'
-ninja: no work to do.
+[1/3] Building C object CMakeFiles/native-lib.dir/dlopen.c.o
+/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.c:72:13: warning: implicitly declaring library function 'memcpy' with type 'void *(void *, const void *, unsigned long)' [-Wimplicit-function-declaration]
+            memcpy(__insns, "\x52\x52\xFF\xE1", 4);
+            ^
+/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.c:72:13: note: include the header <string.h> or explicitly provide a declaration for 'memcpy'
+/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/dlopen.c:126:55: warning: cast to 'void *' from smaller integer type 'int' [-Wint-to-void-pointer-cast]
+        return STUBS.quick_on_stack_replace(filename, (void *)flag,
+                                                      ^
+2 warnings generated.
+[2/3] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+[3/3] Linking CXX shared library /Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so

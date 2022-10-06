@@ -24,6 +24,7 @@ import com.rzm.testapplication.oom.OOMActivity;
 import com.rzm.testapplication.net.okhttp.OkHttpActivity;
 import com.rzm.testapplication.net.retrofit.RetrofitActivity;
 import com.rzm.testapplication.startup.StartupActivity;
+import com.rzm.testapplication.web_socket.WebSocketActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -132,5 +133,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void kcoroutine(View view) {
         startActivity(new Intent(getApplicationContext(), CoroutineKotlinActivity.class));
+    }
+
+    public void WebSocket(View view) {
+        startActivity(new Intent(getApplicationContext(), WebSocketActivity.class));
     }
 }

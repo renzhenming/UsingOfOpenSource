@@ -1,9 +1,8 @@
 {
   "buildFiles": [
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/platforms.cmake",
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/android.toolchain.cmake",
-    "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/CMakeLists.txt",
-    "/Users/renzhenming/android-ndk-r22b/build/cmake/compiler_id.cmake"
+    "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/build/cmake/platforms.cmake",
+    "/Users/renzhenming/Library/Android/sdk/ndk/21.1.6352462/build/cmake/android.toolchain.cmake",
+    "/Users/renzhenming/AndroidStudioProjects/TestApplication/app/src/main/cpp/CMakeLists.txt"
   ],
   "cleanCommands": [
     "/Users/renzhenming/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/renzhenming/AndroidStudioProjects/TestApplication/app/.cxx/cmake/release/armeabi-v7a\" clean"

@@ -49,7 +49,7 @@ class ApmTask : AndroidStartup<Void>() {
         //builder.setEnabled(ApmTask.FLAG_COLLECT_ACTIVITY_AOP); //activity采用aop方案时打开，默认关闭即可。
         builder.setEnabled(ApmTask.FLAG_LOCAL_DEBUG) //是否读取本地配置，默认关闭即可。
         Client.attach(builder.build())
-        Client.isDebugOpen(true) //设置成true的时候将会打开悬浮窗
+//        Client.isDebugOpen(true) //设置成true的时候将会打开悬浮窗
         Client.startWork()
         LogUtils.log("$t ApmTask：end")
         return null

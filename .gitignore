@@ -4,10 +4,11 @@
 
 # Files for the Dalvik VM
 *.dex
-
+.cxx/
+app/.cxx/
 # Java class files
 *.class
-
+*.idea/
 # Generated files
 bin/
 gen/

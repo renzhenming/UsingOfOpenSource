@@ -2,3 +2,7 @@
 1	558	1662196125	CMakeFiles/native-lib.dir/dlopen.c.o	38e54b7c354d2f23
 1	928	1662196125	CMakeFiles/native-lib.dir/native-lib.cpp.o	d6a0c36aa4703542
 928	1037	1662196126	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	82cb1ec58a4f9e6c
+1	13	0	clean	f6b3a861aca1db4c
+1	467	1664935355	CMakeFiles/native-lib.dir/dlopen.c.o	38e54b7c354d2f23
+1	785	1664935355	CMakeFiles/native-lib.dir/native-lib.cpp.o	d6a0c36aa4703542
+785	892	1664935355	/Users/renzhenming/AndroidStudioProjects/TestApplication/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so	82cb1ec58a4f9e6c

@@ -13,6 +13,13 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="WebSocket"
+            android:text="WebSocket"
+            android:textAllCaps="false" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="kcoroutine"
             android:text="协程"
             android:textAllCaps="false" />

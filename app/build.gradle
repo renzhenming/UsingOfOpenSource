@@ -217,6 +217,10 @@ dependencies {
     implementation "com.kuaishou.koom:koom-java-leak:2.2.0"
     implementation "com.kuaishou.koom:koom-monitor-base:2.2.0"
 
+    //websocket
+    //implementation "org.java-websocket:Java-WebSocket:1.5.1"
+    implementation project(path: ':websocketlib')
+
     //dokit
     //TODO 编译没有通过 先放着吧
     //TODO Execution failed for task ':app:processDebugManifest'.
